@@ -1,0 +1,31 @@
+{
+  "parser": "babel-eslint",
+  "plugins": [
+    "react-native"
+  ],
+  "env": {
+    "jest": true
+  },
+  "extends": [
+    "airbnb",
+    "plugin:react-native/all"
+  ],
+  "settings": {
+    "import/resolver": "react-native"
+  },
+  "globals": {
+    "fetch": false
+  },
+  "rules": {
+    "no-use-before-define": [0],
+    "import/no-extraneous-dependencies": ["error", {"devDependencies": ["__tests__/**/*.js", "__mocks__/**/*.js" , "storybook/**/*.js", "app/config/ReactotronConfig.js"]}],
+    "react/jsx-filename-extension": [1, { "extensions": [".js", ".jsx"] } ],
+    "react/jsx-no-literals": [1, { "noStrings": true }],
+    "react-native/no-color-literals": [0],
+    "react-native/no-inline-styles": [0],
+    "react-native/split-platform-components": [0],
+    "react/jsx-no-bind": [0],
+    "no-underscore-dangle": [0]
+
+  }
+}

@@ -1,0 +1,9 @@
+{
+  "globals": {
+    "$": true,
+    "$$": true,
+    "browser": true,
+    "device":true,
+    "ngApimock": true
+  }
+}

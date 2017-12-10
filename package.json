@@ -1,0 +1,66 @@
+{
+  "name": "wswebcreation-react-native-app",
+  "version": "0.0.1",
+  "private": true,
+  "scripts": {
+    "e2e.ios": "node_modules/.bin/wdio __tests__/e2e/config/wdio.ios.conf.js",
+    "start": "node node_modules/react-native/local-cli/cli.js start",
+    "start.ios.simulator": "node ./start.ios.simulator.js"
+  },
+  "rnpm": {
+    "assets": [
+      "./app/assets/fonts/Roboto_Mono/"
+    ]
+  },
+  "dependencies": {
+    "fetch": "^1.1.0",
+    "prop-types": "^15.6.0",
+    "react": "16.0.0",
+    "react-native": "0.50.3",
+    "react-native-elements": "^0.18.2",
+    "react-native-hyperlink": "0.0.11",
+    "react-native-invertible-scroll-view": "^1.1.0",
+    "react-native-keyboard-aware-scroll-view": "^0.4.1",
+    "react-native-keyboard-spacer": "^0.4.1",
+    "react-native-vector-icons": "^4.4.2",
+    "react-navigation": "^1.0.0-beta.19"
+  },
+  "devDependencies": {
+    "babel-eslint": "^8.0.1",
+    "babel-jest": "21.2.0",
+    "babel-preset-react-native": "4.0.0",
+    "babel-register": "^6.26.0",
+    "chai": "^4.1.2",
+    "cucumber": "~2.3.1",
+    "eslint": "^4.3.0",
+    "eslint-config-airbnb": "^15.1.0",
+    "eslint-import-resolver-react-native": "^0.1.0",
+    "eslint-plugin-import": "^2.7.0",
+    "eslint-plugin-jsx-a11y": "^5.1.1",
+    "eslint-plugin-react": "^7.1.0",
+    "eslint-plugin-react-native": "^3.1.0",
+    "fs-extra": "^4.0.2",
+    "inquirer": "^4.0.0",
+    "jest": "21.2.1",
+    "multiple-cucumber-html-reporter": "^1.2.0",
+    "react-test-renderer": "16.0.0",
+    "wdio-appium-service": "^0.2.3",
+    "wdio-cucumber-framework": "^1.0.2",
+    "wdio-spec-reporter": "^0.1.2",
+    "webdriverio": "^4.9.2",
+    "yargs": "^10.0.3"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/wswebcreation/wswebcreation-react-native-app.git"
+  },
+  "keywords": [
+    "testautomation",
+    "react-native",
+    "appium",
+    "webdriver.io",
+    "cucumberjs"
+  ],
+  "author": "Wim Selles - wswebcreation",
+  "license": "MIT"
+}
