@@ -30,8 +30,6 @@
     "babel-jest": "21.2.0",
     "babel-preset-react-native": "4.0.0",
     "babel-register": "^6.26.0",
-    "chai": "^4.1.2",
-    "cucumber": "~2.3.1",
     "eslint": "^4.3.0",
     "eslint-config-airbnb": "^15.1.0",
     "eslint-import-resolver-react-native": "^0.1.0",
@@ -39,16 +37,7 @@
     "eslint-plugin-jsx-a11y": "^5.1.1",
     "eslint-plugin-react": "^7.1.0",
     "eslint-plugin-react-native": "^3.1.0",
-    "fs-extra": "^4.0.2",
-    "inquirer": "^4.0.0",
-    "jest": "21.2.1",
-    "multiple-cucumber-html-reporter": "^1.2.0",
-    "react-test-renderer": "16.0.0",
-    "wdio-appium-service": "^0.2.3",
-    "wdio-cucumber-framework": "^1.0.2",
-    "wdio-spec-reporter": "^0.1.2",
-    "webdriverio": "^4.9.2",
-    "yargs": "^10.0.3"
+    "react-test-renderer": "16.0.0"
   },
   "repository": {
     "type": "git",
