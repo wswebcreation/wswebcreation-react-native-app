@@ -1,8 +1,6 @@
 # wswebcreation-react-native-app
 
-[![Join the chat at https://gitter.im/wswebcreation/wswebcreation-react-native-app](https://badges.gitter.im/wswebcreation/wswebcreation-react-native-app.svg)](https://gitter.im/wswebcreation/wswebcreation-react-native-app?utm_source=badge&utm_medium=badge&utm_campaign=pr-badge&utm_content=badge)
-
-[![Join the chat at https://gitter.im/wswebcreation](https://badges.gitter.im/wswebcreation.svg)](https://gitter.im/wswebcreation/Lobby) [![BuddyBuild](https://dashboard.buddybuild.com/api/statusImage?appID=5a2d24c66d0afd0001af256f&branch=master&build=latest)](https://dashboard.buddybuild.com/apps/5a2d24c66d0afd0001af256f/build/latest?branch=master)
+[![Join the chat at https://gitter.im/wswebcreation/wswebcreation-react-native-app](https://badges.gitter.im/wswebcreation/wswebcreation-react-native-app.svg)](https://gitter.im/wswebcreation/wswebcreation-react-native-app?utm_source=badge&utm_medium=badge&utm_campaign=pr-badge&utm_content=badge) [![BuddyBuild](https://dashboard.buddybuild.com/api/statusImage?appID=5a2d24c66d0afd0001af256f&branch=master&build=latest)](https://dashboard.buddybuild.com/apps/5a2d24c66d0afd0001af256f/build/latest?branch=master)
 
 An app which is build with React Native and will be used for test (automation) purposes.
 
