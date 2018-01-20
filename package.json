@@ -4,6 +4,7 @@
   "private": true,
   "scripts": {
     "e2e.ios": "node_modules/.bin/wdio __tests__/e2e/config/wdio.ios.conf.js",
+    "postinstall": "rm ./node_modules/react-native/local-cli/core/__fixtures__/files/package.json",
     "start": "node node_modules/react-native/local-cli/cli.js start",
     "start.ios.simulator": "node ./start.ios.simulator.js"
   },
