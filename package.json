@@ -15,15 +15,15 @@
   "dependencies": {
     "fetch": "^1.1.0",
     "prop-types": "^15.6.0",
-    "react": "16.0.0",
-    "react-native": "0.50.3",
-    "react-native-elements": "^0.18.2",
-    "react-native-hyperlink": "0.0.11",
+    "react": "^16.2.0",
+    "react-native": "^0.52.0",
+    "react-native-elements": "^0.19.0",
+    "react-native-hyperlink": "0.0.12",
     "react-native-invertible-scroll-view": "^1.1.0",
-    "react-native-keyboard-aware-scroll-view": "^0.4.1",
+    "react-native-keyboard-aware-scroll-view": "^0.4.3",
     "react-native-keyboard-spacer": "^0.4.1",
-    "react-native-vector-icons": "^4.4.2",
-    "react-navigation": "^1.0.0-beta.19"
+    "react-native-vector-icons": "^4.5.0",
+    "react-navigation": "^1.0.0-beta.27"
   },
   "devDependencies": {
     "babel-eslint": "^8.0.1",
