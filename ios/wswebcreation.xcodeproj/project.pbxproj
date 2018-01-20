@@ -40,7 +40,6 @@
 		884BD6361FDDCF6400731E1E /* CoreVideo.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 884BD6351FDDCF6400731E1E /* CoreVideo.framework */; };
 		884BD6381FDDCF6D00731E1E /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 884BD6371FDDCF6D00731E1E /* QuartzCore.framework */; };
 		884BD63A1FDDCF7600731E1E /* SystemConfiguration.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 884BD6391FDDCF7600731E1E /* SystemConfiguration.framework */; };
-		88AFC0421FDE656A00FA045A /* BuddyBuildSDK.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 88AFC0411FDE656A00FA045A /* BuddyBuildSDK.framework */; };
 		992F19E0B10245DE87D70FCB /* MaterialIcons.ttf in Resources */ = {isa = PBXBuildFile; fileRef = F009D9B5795547A789C898A8 /* MaterialIcons.ttf */; };
 		9E3CA2ACC4EB499CA278F3A2 /* RobotoMono-ThinItalic.ttf in Resources */ = {isa = PBXBuildFile; fileRef = B74AE0E7B7874C4D92451310 /* RobotoMono-ThinItalic.ttf */; };
 		A9EA910126314F3C8DB933E8 /* RobotoMono-Thin.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 2EFA541ACC324DCBA54DC665 /* RobotoMono-Thin.ttf */; };
@@ -348,7 +347,6 @@
 		6FDCC9EFA96B402B963BFE99 /* FontAwesome.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = FontAwesome.ttf; path = "../node_modules/react-native-vector-icons/Fonts/FontAwesome.ttf"; sourceTree = "<group>"; };
 		78C398B01ACF4ADC00677621 /* RCTLinking.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = RCTLinking.xcodeproj; path = "../node_modules/react-native/Libraries/LinkingIOS/RCTLinking.xcodeproj"; sourceTree = "<group>"; };
 		832341B01AAA6A8300B99B32 /* RCTText.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = RCTText.xcodeproj; path = "../node_modules/react-native/Libraries/Text/RCTText.xcodeproj"; sourceTree = "<group>"; };
-		884BD62B1FDDCF3200731E1E /* BuddyBuildSDK */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = BuddyBuildSDK; path = ../BuddyBuildSDK.framework/BuddyBuildSDK; sourceTree = "<group>"; };
 		884BD62D1FDDCF3F00731E1E /* CoreTelephony.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreTelephony.framework; path = System/Library/Frameworks/CoreTelephony.framework; sourceTree = SDKROOT; };
 		884BD62F1FDDCF4700731E1E /* CoreText.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreText.framework; path = System/Library/Frameworks/CoreText.framework; sourceTree = SDKROOT; };
 		884BD6311FDDCF5200731E1E /* CoreMedia.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreMedia.framework; path = System/Library/Frameworks/CoreMedia.framework; sourceTree = SDKROOT; };
@@ -357,7 +355,6 @@
 		884BD6371FDDCF6D00731E1E /* QuartzCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QuartzCore.framework; path = System/Library/Frameworks/QuartzCore.framework; sourceTree = SDKROOT; };
 		884BD6391FDDCF7600731E1E /* SystemConfiguration.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SystemConfiguration.framework; path = System/Library/Frameworks/SystemConfiguration.framework; sourceTree = SDKROOT; };
 		889254281FDDCE570061E297 /* AssetsLibrary.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AssetsLibrary.framework; path = System/Library/Frameworks/AssetsLibrary.framework; sourceTree = SDKROOT; };
-		88AFC0411FDE656A00FA045A /* BuddyBuildSDK.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = BuddyBuildSDK.framework; sourceTree = "<group>"; };
 		8BF630F69D214725A0FE7D3F /* RobotoMono-Bold.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = "RobotoMono-Bold.ttf"; path = "../app/assets/fonts/Roboto_Mono/RobotoMono-Bold.ttf"; sourceTree = "<group>"; };
 		93F9BC996663455BB6CD480F /* SimpleLineIcons.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = SimpleLineIcons.ttf; path = "../node_modules/react-native-vector-icons/Fonts/SimpleLineIcons.ttf"; sourceTree = "<group>"; };
 		972DDE30F2564783943C4681 /* Foundation.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = Foundation.ttf; path = "../node_modules/react-native-vector-icons/Fonts/Foundation.ttf"; sourceTree = "<group>"; };
@@ -389,7 +386,6 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				88AFC0421FDE656A00FA045A /* BuddyBuildSDK.framework in Frameworks */,
 				884BD63A1FDDCF7600731E1E /* SystemConfiguration.framework in Frameworks */,
 				884BD6381FDDCF6D00731E1E /* QuartzCore.framework in Frameworks */,
 				884BD6361FDDCF6400731E1E /* CoreVideo.framework in Frameworks */,
@@ -622,7 +618,6 @@
 		889253F71FDDCE560061E297 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
-				88AFC0411FDE656A00FA045A /* BuddyBuildSDK.framework */,
 				884BD6391FDDCF7600731E1E /* SystemConfiguration.framework */,
 				884BD6371FDDCF6D00731E1E /* QuartzCore.framework */,
 				884BD6351FDDCF6400731E1E /* CoreVideo.framework */,
@@ -630,7 +625,6 @@
 				884BD6311FDDCF5200731E1E /* CoreMedia.framework */,
 				884BD62F1FDDCF4700731E1E /* CoreText.framework */,
 				884BD62D1FDDCF3F00731E1E /* CoreTelephony.framework */,
-				884BD62B1FDDCF3200731E1E /* BuddyBuildSDK */,
 				889254281FDDCE570061E297 /* AssetsLibrary.framework */,
 			);
 			name = Frameworks;
