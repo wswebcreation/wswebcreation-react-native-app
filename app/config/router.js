@@ -10,19 +10,6 @@ import ChatBox from '../screens/ChatBox';
 import WebViewSelection from '../screens/WebviewSelection';
 
 const Tabs = TabNavigator({
-    Chats: {
-      screen: Chats,
-      navigationOptions: {
-        tabBarLabel: 'Chats',
-        tabBarIcon: ({ tintColor }) =>
-          <Icon
-            name="ios-chatbubbles-outline"
-            type="ionicon"
-            size={25}
-            color={tintColor}
-          />
-      },
-    },
     Home: {
       screen: Home,
       navigationOptions: {
@@ -43,6 +30,19 @@ const Tabs = TabNavigator({
         tabBarIcon: ({ tintColor }) =>
           <Icon
             name="ios-globe-outline"
+            type="ionicon"
+            size={25}
+            color={tintColor}
+          />
+      },
+    },
+    Chats: {
+      screen: Chats,
+      navigationOptions: {
+        tabBarLabel: 'Chats',
+        tabBarIcon: ({ tintColor }) =>
+          <Icon
+            name="ios-chatbubbles-outline"
             type="ionicon"
             size={25}
             color={tintColor}
