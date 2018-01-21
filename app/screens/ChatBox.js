@@ -1,41 +1,22 @@
 import React from 'react';
 import {
-  Dimensions,
   StyleSheet,
   Text,
   Image,
   View,
-  TextInput,
-  TouchableOpacity,
   ListView,
 } from 'react-native';
 import { Icon } from 'react-native-elements';
 import InvertibleScrollView from 'react-native-invertible-scroll-view';
-import KeyboardSpacer from 'react-native-keyboard-spacer';
+import { ChatInput } from '../components/ChatInput';
 import { MessageBubble } from '../components/MessageBubble';
 import { api } from '../config/Api';
-import { IS_IOS } from '../config/Constants';
 
 let conversation;
-const { height } = Dimensions.get('window');
 const ds = new ListView.DataSource({ rowHasChanged: (r1, r2) => r1 != r2 });
 const defaultHeight = 30;
 
 class ChatBox extends React.Component {
-  static navigationOptions = ({ navigation }) => {
-    const person = navigation.state.params.person;
-    const headerLeft = (
-      <View style={styles.leftHeaderContainer}>
-        <Icon name="ios-arrow-back" iconStyle={styles.chatIcons} type="ionicon"
-              onPress={() => navigation.goBack(null)}/>
-        <Image source={{ uri: person.image }} style={styles.chatInitStyle}
-               resizeMode='contain'/>
-        <Text style={styles.nameText}>{`${person.firstName} ${person.lastName}`}</Text>
-      </View>
-    );
-    return { headerLeft };
-  };
-
   constructor(props) {
     super(props);
     conversation = this.props.navigation.state.params.person.conversation || [];
@@ -46,6 +27,29 @@ class ChatBox extends React.Component {
       height: defaultHeight
     };
   }
+
+  static navigationOptions ({ navigation }) {
+    const person = navigation.state.params.person;
+    const headerLeft = (
+      <View style={styles.leftHeaderContainer}>
+        <Icon
+          name="ios-arrow-back"
+          iconStyle={styles.chatIcons}
+          type="ionicon"
+          onPress={() => navigation.goBack(null)}
+        />
+        <Image
+          source={{ uri: person.image }}
+          style={styles.chatInitStyle}
+          resizeMode='contain'
+        />
+        <Text style={styles.nameText}>
+          {`${person.firstName} ${person.lastName}`}
+        </Text>
+      </View>
+    );
+    return { headerLeft };
+  };
 
   responses() {
     return api.getOneLinersResponse();
@@ -69,26 +73,7 @@ class ChatBox extends React.Component {
     }
   }
 
-  updateSize(autoHeight) {
-    const maxInputHeight = 0.25 * height;
-    autoHeight = autoHeight < defaultHeight ? defaultHeight : autoHeight;
-    this.setState({
-      height: autoHeight > maxInputHeight ? maxInputHeight + 10 : autoHeight + 10
-    });
-  }
-
-  renderKeyboardSpacer = () => {
-    if (IS_IOS) {
-      return <KeyboardSpacer/>;
-    }
-  };
-
   render() {
-    const { height } = this.state;
-    let newStyle = {
-      height
-    };
-
     return (
       <View style={styles.mainContainer}>
         <ListView
@@ -105,36 +90,11 @@ class ChatBox extends React.Component {
           noScroll
           renderScrollComponent={props => <InvertibleScrollView {...props} inverted/>}
         />
-        <View style={styles.footerContainer}>
-          <TouchableOpacity>
-            <Icon name="plus" iconStyle={styles.chatIcons} type="feather"/>
-          </TouchableOpacity>
-          <TextInput
-            multiline={true}
-            value={this.state.message}
-            placeholder="Type a message..."
-            placeholderTextColor="#EDEDED"
-            selectionColor="white"
-            onChangeText={(message) => this.setState({ message })}
-            style={[styles.input, newStyle]}
-            autoCapitalize="none"
-            autoCorrect={false}
-            returnKeyType="next"
-            onContentSizeChange={(e) => this.updateSize(e.nativeEvent.contentSize.height)}
-            testID='test-chatField'
-          />
-          <TouchableOpacity
-            onPress={() => this.send()}
-            testID='test-send'
-          >
-            <Icon
-              name="ios-send"
-              iconStyle={styles.chatIcons}
-              type="ionicon"
-            />
-          </TouchableOpacity>
-        </View>
-        {this.renderKeyboardSpacer()}
+        <ChatInput
+          onChangeText={(message) => this.setState({ message })}
+          onPress={() => this.send()}
+          value={this.state.message}
+        />
       </View>
     );
   }
@@ -167,59 +127,5 @@ const styles = StyleSheet.create({
   mainContainer: {
     flex: 1,
     backgroundColor: '#f2f2f2',
-  },
-  contentContainer: {},
-  leftMessage: {
-    backgroundColor: '#fff',
-    padding: 10,
-    borderRadius: 5,
-    marginLeft: 15,
-    marginBottom: 5,
-    marginTop: 5,
-    marginRight: 75,
-    alignSelf: 'flex-start'
-  },
-  rightMessage: {
-    backgroundColor: '#dbf8c6',
-    padding: 10,
-    borderRadius: 5,
-    marginRight: 15,
-    marginBottom: 5,
-    marginTop: 5,
-    marginLeft: 75,
-    alignSelf: 'flex-end'
-  },
-  listItemContainer: {},
-  footerContainer: {
-    flexDirection: 'row',
-    alignSelf: 'flex-end',
-    marginTop: 10,
-    backgroundColor: '#fff',
-    borderColor: '#afafaf',
-    borderTopWidth: 1,
-    paddingBottom: 5,
-    paddingTop: 5,
-  },
-  input: {
-    color: '#000',
-    flex: 1,
-    fontSize: 16,
-    backgroundColor: '#fff',
-    borderColor: '#afafaf',
-    borderWidth: 1,
-    borderRadius: 25,
-    paddingTop: 10,
-    paddingBottom: 5,
-    paddingLeft: 17,
-    paddingRight: 17,
-  },
-  chatIcons: {
-    color: '#1b73e3',
-    marginLeft: 10,
-    marginRight: 10,
-    marginBottom: 5,
-    marginTop: 5,
-    fontSize: 28,
-    width: 35,
   },
 });

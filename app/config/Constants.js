@@ -1,4 +1,5 @@
-import {Platform} from 'react-native';
+import { Dimensions, Platform } from 'react-native';
+
 export const BASE_URL = 'https://gist.githubusercontent.com/wswebcreation/';
 export const API_HEADERS = {
   'Content-Type': 'application/x-www-form-urlencoded',
@@ -8,3 +9,7 @@ export const CHAT_HISTORY_URL = 'b1979ed905833186e5526a3bcf31bc76/raw/7d8219c2d6
 export const ONE_LINERS_URL = '46101d9f04bbc90622e68c6f2ac2bdce/raw/88f23f10983d99dbf98524a487870ff9bf6684c7/onliners.response.json';
 
 export const IS_IOS = Platform.OS === 'ios';
+export const {
+  width: SCREEN_WIDTH,
+  height: SCREEN_HEIGHT,
+} = Dimensions.get('window');
