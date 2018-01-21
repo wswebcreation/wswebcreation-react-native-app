@@ -13,6 +13,7 @@ import { Icon } from 'react-native-elements';
 import InvertibleScrollView from 'react-native-invertible-scroll-view';
 import KeyboardSpacer from 'react-native-keyboard-spacer';
 import { api } from '../config/Api';
+import { IS_IOS } from '../config/Constants';
 
 let conversation;
 const { height } = Dimensions.get('window');
@@ -91,6 +92,12 @@ class ChatBox extends React.Component {
     });
   }
 
+  renderKeyboardSpacer = () => {
+    if (IS_IOS) {
+      return <KeyboardSpacer/>;
+    }
+  };
+
   render() {
     const { height } = this.state;
     let newStyle = {
@@ -138,7 +145,7 @@ class ChatBox extends React.Component {
             />
           </TouchableOpacity>
         </View>
-        <KeyboardSpacer/>
+        {this.renderKeyboardSpacer()}
       </View>
     );
   }

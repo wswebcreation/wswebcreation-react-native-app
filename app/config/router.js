@@ -1,4 +1,5 @@
 import React from 'react';
+import { Platform } from 'react-native';
 import { StackNavigator, TabNavigator } from 'react-navigation';
 import { Icon } from 'react-native-elements';
 
@@ -36,6 +37,23 @@ const Tabs = TabNavigator({
   },
   {
     swipeEnabled: true,
+    tabBarPosition: 'bottom',
+    tabBarOptions: {
+      showIcon: true,
+      activeTintColor: '#007dff',
+      inactiveTintColor:'#999999',
+      style: {
+        backgroundColor: '#ffffff',
+        ...Platform.select({
+          android:{
+            height: 60,
+          },
+        }),
+      },
+      indicatorStyle: {
+        backgroundColor: 'white'
+      },
+    }
   }
 );
 
@@ -49,4 +67,11 @@ export const StackMainNavigation = StackNavigator({
   WebViewScreen: {
     screen: WebViewScreen,
   },
+},{
+  navigationOptions:{
+    headerTitleStyle: {
+      alignSelf: 'center',
+      textAlign: 'center'
+    },
+  }
 });

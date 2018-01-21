@@ -31,15 +31,13 @@ This will only work on a MAC so get started execute the following steps:
 
 ## TODO
 - [x] Create an iOS app
-- [x] Hookup to [buddybuild](https://www.buddybuild.com/) to be able to create an iOS app
-- [ ] Add an APP icon
-- [ ] Create an Android app
-- [ ] Add UT's with Jest and Enzyme
+- [x] Add an APP icon
+- [x] Create an Android app
 - [ ] Refactor code
 - [ ] Add Appium tests
 - [ ] Add Detox tests
+- [ ] Add UT's with Jest and Enzyme
 - [ ] Implement different environments / build types
-- [ ] Create a pipeline with [buddybuild](https://www.buddybuild.com/) and connect it to a cloudprovider to test on real devices / simulators / emulators
 
 ## Contributing
 If you'd like to contribute feel free to create a PR. If you have some code feedback you may also add a PR or contact me through [Gitter](https://gitter.im/wswebcreation)

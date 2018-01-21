@@ -1,12 +1,14 @@
 import React, { Component } from 'react';
 import {
   Dimensions,
+  Platform,
   ScrollView,
   StyleSheet,
   Text,
   View,
 } from 'react-native';
 import Hyperlink from 'react-native-hyperlink'
+import { BorderText } from '../components/BorderText';
 
 const { height } = Dimensions.get('window');
 
@@ -19,9 +21,9 @@ export default class Home extends Component {
     return (
       <ScrollView style={styles.container}>
         <View style={styles.headerContainer}>
-          <Text style={[styles.headerBorder, styles.header]}>
-            WSWEBCREATION
-          </Text>
+          <BorderText
+            text="wswebcreation"
+          />
         </View>
         <Text style={styles.defaultFont}>
           Hi there, welcome to my demo app.
@@ -88,23 +90,31 @@ const styles = StyleSheet.create({
   headerBorder: {
     borderColor: '#000',
     borderWidth: 3,
-    paddingBottom: 9,
+    ...Platform.select({
+      ios:{
+        paddingBottom: 9,
+      },
+      android:{
+        paddingBottom: 4,
+      },
+    }),
     paddingLeft: 13,
     paddingRight: 13,
     paddingTop: 9,
     textAlign: 'center'
   },
   header: {
-    fontFamily: 'Roboto Mono',
+    color: '#000',
+    fontFamily: 'RobotoMono-Bold',
     fontSize: 20,
-    fontWeight: 'bold',
   },
   headerMargin: {
     marginBottom: 10,
     marginTop: 15,
   },
   defaultFont: {
-    fontFamily: 'Roboto Mono',
+    color: '#000',
+    fontFamily: 'RobotoMono-Regular',
     fontSize: 16,
     padding: 5,
   }
