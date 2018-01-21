@@ -33,7 +33,9 @@ This will only work on a MAC so get started execute the following steps:
 - [x] Create an iOS app
 - [x] Add an APP icon
 - [x] Create an Android app
-- [ ] Refactor code
+- [x] Refactor code
+- [ ] Fix issue Android stackmenu and chatbox scroll to much up
+- [ ] Refactor `ChatBox.js` code
 - [ ] Add Appium tests
 - [ ] Add Detox tests
 - [ ] Add UT's with Jest and Enzyme

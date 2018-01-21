@@ -10,28 +10,43 @@ import ChatBox from '../screens/ChatBox';
 import WebViewSelection from '../screens/WebviewSelection';
 
 const Tabs = TabNavigator({
+    Chats: {
+      screen: Chats,
+      navigationOptions: {
+        tabBarLabel: 'Chats',
+        tabBarIcon: ({ tintColor }) =>
+          <Icon
+            name="ios-chatbubbles-outline"
+            type="ionicon"
+            size={25}
+            color={tintColor}
+          />
+      },
+    },
     Home: {
       screen: Home,
       navigationOptions: {
         tabBarLabel: 'Home',
-        tabBarIcon: ({ tintColor }) => <Icon name="ios-home-outline" type="ionicon" size={25}
-                                             color={tintColor}/>
+        tabBarIcon: ({ tintColor }) =>
+          <Icon
+            name="ios-home-outline"
+            type="ionicon"
+            size={25}
+            color={tintColor}
+          />
       },
     },
     Webview: {
       screen: WebViewSelection,
       navigationOptions: {
         tabBarLabel: 'Webview',
-        tabBarIcon: ({ tintColor }) => <Icon name="ios-globe-outline" type="ionicon" size={25}
-                                             color={tintColor}/>
-      },
-    },
-    Chats: {
-      screen: Chats,
-      navigationOptions: {
-        tabBarLabel: 'Chats',
-        tabBarIcon: ({ tintColor }) => <Icon name="ios-chatbubbles-outline" type="ionicon" size={25}
-                                             color={tintColor}/>
+        tabBarIcon: ({ tintColor }) =>
+          <Icon
+            name="ios-globe-outline"
+            type="ionicon"
+            size={25}
+            color={tintColor}
+          />
       },
     },
   },
@@ -40,12 +55,12 @@ const Tabs = TabNavigator({
     tabBarPosition: 'bottom',
     tabBarOptions: {
       showIcon: true,
-      activeTintColor: '#007dff',
-      inactiveTintColor:'#999999',
+      activeTintColor: '#2980b9',
+      inactiveTintColor: '#999999',
       style: {
         backgroundColor: '#ffffff',
         ...Platform.select({
-          android:{
+          android: {
             height: 60,
           },
         }),
@@ -67,11 +82,12 @@ export const StackMainNavigation = StackNavigator({
   WebViewScreen: {
     screen: WebViewScreen,
   },
-},{
-  navigationOptions:{
+}, {
+  navigationOptions: {
     headerTitleStyle: {
       alignSelf: 'center',
-      textAlign: 'center'
+      color: '#000',
+      textAlign: 'center',
     },
   }
 });

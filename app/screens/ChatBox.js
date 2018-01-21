@@ -12,6 +12,7 @@ import {
 import { Icon } from 'react-native-elements';
 import InvertibleScrollView from 'react-native-invertible-scroll-view';
 import KeyboardSpacer from 'react-native-keyboard-spacer';
+import { MessageBubble } from '../components/MessageBubble';
 import { api } from '../config/Api';
 import { IS_IOS } from '../config/Constants';
 
@@ -19,22 +20,6 @@ let conversation;
 const { height } = Dimensions.get('window');
 const ds = new ListView.DataSource({ rowHasChanged: (r1, r2) => r1 != r2 });
 const defaultHeight = 30;
-
-
-const EachMsg = (props) => {
-  if (props.me === true) {
-    return (
-      <View style={styles.rightMessage}>
-        <Text>{props.msg}</Text>
-      </View>
-    );
-  }
-  return (
-    <View style={styles.leftMessage}>
-      <Text>{props.msg}</Text>
-    </View>
-  );
-};
 
 class ChatBox extends React.Component {
   static navigationOptions = ({ navigation }) => {
@@ -55,31 +40,31 @@ class ChatBox extends React.Component {
     super(props);
     conversation = this.props.navigation.state.params.person.conversation || [];
     this.state = {
-      msg: '',
-      me: true,
+      message: '',
+      placeRight: true,
       datasource: ds.cloneWithRows(conversation),
       height: defaultHeight
     };
   }
 
-  responses(){
-    return api.getOnelinersResponse();
+  responses() {
+    return api.getOneLinersResponse();
   }
 
   async send() {
-    if (this.state.msg.length > 0) {
+    if (this.state.message.length > 0) {
       const replies = await this.responses();
       const randomNumber = Math.floor(Math.random() * replies.length);
       conversation.unshift({
-        me: false,
-        msg: replies[randomNumber],
+        placeRight: false,
+        message: replies[randomNumber],
       }, {
-        me: true,
-        msg: this.state.msg
+        placeRight: true,
+        message: this.state.message
       });
       this.setState({
         datasource: ds.cloneWithRows(conversation),
-        msg: ''
+        message: ''
       });
     }
   }
@@ -111,7 +96,11 @@ class ChatBox extends React.Component {
           contentContainerStyle={{ justifyContent: 'flex-end' }}
           style={{ flex: 1, }}
           dataSource={this.state.datasource}
-          renderRow={rowData => <EachMsg {...rowData}/>}
+          renderRow={rowData => (
+            <MessageBubble
+              placeRight={rowData.placeRight}
+              message={rowData.message}
+            />)}
           enableEmptySections
           noScroll
           renderScrollComponent={props => <InvertibleScrollView {...props} inverted/>}
@@ -122,11 +111,11 @@ class ChatBox extends React.Component {
           </TouchableOpacity>
           <TextInput
             multiline={true}
-            value={this.state.msg}
+            value={this.state.message}
             placeholder="Type a message..."
             placeholderTextColor="#EDEDED"
             selectionColor="white"
-            onChangeText={(msg) => this.setState({ msg })}
+            onChangeText={(message) => this.setState({ message })}
             style={[styles.input, newStyle]}
             autoCapitalize="none"
             autoCorrect={false}

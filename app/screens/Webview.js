@@ -16,9 +16,9 @@ export default class WebViewScreen extends Component {
   render() {
     return (
       <WebView
-        source={{ uri: this.props.navigation.state.params.url }}
         renderLoading={this.renderLoading}
         startInLoadingState
+        source={{ uri: this.props.navigation.state.params.url }}
       />
     );
   }

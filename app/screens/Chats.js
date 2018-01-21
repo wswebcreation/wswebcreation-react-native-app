@@ -7,6 +7,7 @@ import {
   View, TouchableOpacity
 } from 'react-native';
 import Icon from 'react-native-vector-icons/MaterialIcons';
+import { BorderText } from '../components/BorderText';
 import { api } from '../config/Api';
 import ChatBox from './ChatBox';
 
@@ -18,58 +19,71 @@ export default class Chats extends React.Component {
   };
 
   constructor(props) {
-    super(props)
+    super(props);
     this.state = {
       peopleDataSource: ds.cloneWithRows([]),
       loaded: false
     }
   }
 
+  renderChatsOverview = () => (
+    <ListView
+      initialListSize={5}
+      enableEmptySections={true}
+      dataSource={this.state.peopleDataSource}
+      renderRow={(person) => this.renderPersonRow(person)}
+    />
+  );
+
+  renderRetrievingChatsContainer = () => (
+    <View style={styles.loaderContainer}>
+      <BorderText
+        text="Retrieving Chats..."
+      />
+    </View>
+  );
+
   render() {
-    if (this.state.loaded) {
-      return (
-        <ListView
-          initialListSize={5}
-          enableEmptySections={true}
-          dataSource={this.state.peopleDataSource}
-          renderRow={(person) => {
-            return this.renderPersonRow(person)
-          }}/>
-      )
-    } else {
-      return (<Text onPress={() => {
-        this.props.navigator.push({ id: 'chatbox' })
-      }}>Retrieving Chats...</Text>)
-    }
+    return this.state.loaded ? this.renderChatsOverview() : this.renderRetrievingChatsContainer();
   }
 
   renderPersonRow(person) {
     return (
       <TouchableOpacity
-        onPress={() => {
-          this.props.navigation.navigate('ChatBox', { person })
-        }}
+        onPress={() => this.props.navigation.navigate('ChatBox', { person })}
         testID={`test-${person.firstName} ${person.lastName}`}
       >
         <View style={styles.listItemContainer}>
           <View style={styles.iconContainer}>
-            <Image source={{ uri: person.image }} style={styles.initStyle} resizeMode='contain'/>
+            <Image
+              source={{ uri: person.image }}
+              style={styles.initStyle}
+              resizeMode='contain'
+            />
           </View>
           <View style={styles.callerDetailsContainer}>
             <View style={styles.callerDetailsContainerWrap}>
               <View style={styles.nameContainer}>
-                <Text
-                  style={{ fontWeight: 'bold' }}>{`${person.firstName} ${person.lastName}`}</Text>
+                <Text style={{ fontWeight: 'bold' }}>
+                  {`${person.firstName} ${person.lastName}`}
+                </Text>
               </View>
               <View style={styles.dateContainer}>
                 <Text style={{ fontSize: 11 }}>{person.time}</Text>
               </View>
             </View>
             <View style={styles.messageContainer}>
-              <Icon name="done-all" color={person.read ? '#075e54' : '#777'} size={15}
-                    style={{ padding: 0 }}/>
-              <Text numberOfLines={1}
-                    style={{ flex: 1, fontSize: 12, color: '#777' }}>{person.lastMessage}</Text>
+              <Icon
+                name="done-all"
+                color={person.read ? '#075e54' : '#777'}
+                size={15}
+                style={{ padding: 0 }}
+              />
+              <Text
+                numberOfLines={1}
+                style={{ flex: 1, fontSize: 12, color: '#777' }}>
+                {person.lastMessage}
+              </Text>
             </View>
           </View>
         </View>
@@ -77,14 +91,12 @@ export default class Chats extends React.Component {
     )
   }
 
-  componentDidMount() {
-    api.getChatHistory()
-      .then((data) => {
-        this.setState({
-          peopleDataSource: ds.cloneWithRows(data),
-          loaded: true
-        })
-      });
+  async componentDidMount() {
+    const chats = await api.getChatHistory();
+    this.setState({
+      peopleDataSource: ds.cloneWithRows(chats),
+      loaded: true
+    })
   }
 }
 
@@ -95,6 +107,13 @@ const styles = StyleSheet.create({
     flexDirection: 'row',
     alignItems: 'center',
     padding: 10
+  },
+  loaderContainer: {
+    backgroundColor: '#fff',
+    flex: 1,
+    flexDirection: 'column',
+    justifyContent: 'center',
+    alignItems: 'center',
   },
   iconContainer: {
     flex: 1,

@@ -1,12 +1,5 @@
 import React, { Component } from 'react';
-import {
-  Dimensions,
-  Platform,
-  ScrollView,
-  StyleSheet,
-  Text,
-  View,
-} from 'react-native';
+import { Dimensions, ScrollView, StyleSheet, Text, View, } from 'react-native';
 import Hyperlink from 'react-native-hyperlink'
 import { BorderText } from '../components/BorderText';
 
@@ -40,7 +33,7 @@ export default class Home extends Component {
           In the Webview you can enter an URL and load it in the Webview
         </Text>
         <Text style={[styles.header, styles.headerMargin]}>CHATS</Text>
-        <Hyperlink linkDefault={true} linkStyle={ { color: '#2980b9'} }>
+        <Hyperlink linkDefault={true} linkStyle={styles.linkStyle}>
           <Text style={styles.defaultFont}>
             In the chats I created multiple API calls to retrieve JSON data from
             https://gist.github.com/wswebcreation.{'\n'}
@@ -87,22 +80,6 @@ const styles = StyleSheet.create({
     paddingBottom: 0.10 * height,
     paddingTop: 0.20 * height,
   },
-  headerBorder: {
-    borderColor: '#000',
-    borderWidth: 3,
-    ...Platform.select({
-      ios:{
-        paddingBottom: 9,
-      },
-      android:{
-        paddingBottom: 4,
-      },
-    }),
-    paddingLeft: 13,
-    paddingRight: 13,
-    paddingTop: 9,
-    textAlign: 'center'
-  },
   header: {
     color: '#000',
     fontFamily: 'RobotoMono-Bold',
@@ -117,5 +94,8 @@ const styles = StyleSheet.create({
     fontFamily: 'RobotoMono-Regular',
     fontSize: 16,
     padding: 5,
+  },
+  linkStyle: {
+    color: '#2980b9',
   }
 });
