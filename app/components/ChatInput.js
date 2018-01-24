@@ -4,6 +4,8 @@ import { Icon } from 'react-native-elements';
 import KeyboardSpacer from 'react-native-keyboard-spacer';
 import PropTypes from 'prop-types';
 import { IS_IOS, SCREEN_HEIGHT } from '../config/Constants';
+import * as labels from '../config/labels.json';
+import { testProperties } from '../config/TestProperties';
 
 const defaultHeight = 30;
 
@@ -50,7 +52,9 @@ class ChatInput extends Component {
     return (
       <View>
         <View style={styles.container}>
-          <TouchableOpacity>
+          <TouchableOpacity
+            {...testProperties(labels.components.chatInput.addAccessibilityLabel)}
+          >
             <Icon
               name="plus"
               iconStyle={styles.chatIcons}
@@ -66,15 +70,17 @@ class ChatInput extends Component {
             onContentSizeChange={(e) =>
               this.updateSize(e.nativeEvent.contentSize.height)
             }
-            placeholder="Type a message..."
+            placeholder={labels.components.chatInput.placeholder}
             placeholderTextColor="#EDEDED"
             returnKeyType="next"
             selectionColor="white"
             style={[styles.input, newStyle]}
+            underlineColorAndroid="transparent"
+            {...testProperties(labels.components.chatInput.inputAccessibilityLabel)}
           />
           <TouchableOpacity
             onPress={this.props.onPress}
-            testID='test-send'
+            {...testProperties(labels.components.chatInput.sendAccessibilityLabel)}
           >
             <Icon
               name="ios-send"

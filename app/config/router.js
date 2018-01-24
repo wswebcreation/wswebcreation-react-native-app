@@ -8,45 +8,56 @@ import WebViewScreen from '../screens/Webview';
 import Chats from '../screens/Chats';
 import ChatBox from '../screens/ChatBox';
 import WebViewSelection from '../screens/WebviewSelection';
+import { testProperties } from './TestProperties';
+import * as labels from './labels.json';
 
 const Tabs = TabNavigator({
     Home: {
       screen: Home,
       navigationOptions: {
-        tabBarLabel: 'Home',
+        tabBarLabel: labels.tabNavigator.home,
         tabBarIcon: ({ tintColor }) =>
           <Icon
             name="ios-home-outline"
             type="ionicon"
             size={25}
             color={tintColor}
-          />
+          />,
+        tabBarTestIDProps: {
+          ...testProperties(labels.tabNavigator.home),
+        },
       },
     },
     Webview: {
       screen: WebViewSelection,
       navigationOptions: {
-        tabBarLabel: 'Webview',
+        tabBarLabel: labels.tabNavigator.webview,
         tabBarIcon: ({ tintColor }) =>
           <Icon
             name="ios-globe-outline"
             type="ionicon"
             size={25}
             color={tintColor}
-          />
+          />,
+        tabBarTestIDProps: {
+          ...testProperties(labels.tabNavigator.webview),
+        },
       },
     },
     Chats: {
       screen: Chats,
       navigationOptions: {
-        tabBarLabel: 'Chats',
+        tabBarLabel: labels.tabNavigator.chats,
         tabBarIcon: ({ tintColor }) =>
           <Icon
             name="ios-chatbubbles-outline"
             type="ionicon"
             size={25}
             color={tintColor}
-          />
+          />,
+        tabBarTestIDProps: {
+          ...testProperties(labels.tabNavigator.chats),
+        },
       },
     },
   },

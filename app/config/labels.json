@@ -1,0 +1,34 @@
+{
+  "chats": {
+    "loadingText": "Retrieving Chats..."
+  },
+  "components": {
+    "chatInput":{
+      "addAccessibilityLabel": "Add",
+      "inputAccessibilityLabel": "Message input",
+      "placeholder": "Type a message...",
+      "sendAccessibilityLabel": "Send"
+    },
+    "messageBubble": {
+      "your": "Your",
+      "me": "My"
+    }
+  },
+  "stackNavigatorTitle": {
+    "chats": "Chats",
+    "home": "Home",
+    "webview": "Enter an url and submit it.",
+    "goBackAccessibilityLabel": "Go back"
+  },
+  "tabNavigator": {
+    "chats": "Chats",
+    "home": "Home",
+    "webview": "Webview"
+  },
+  "webview": {
+    "errorMessage": "is not a valid url!",
+    "loadingText": "Loading your requested website",
+    "placeHolder": "http://www.wswebcreation.nl",
+    "textAccessibilityLabel": "url input"
+  }
+}

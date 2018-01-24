@@ -1,11 +1,13 @@
 import React, { Component } from 'react';
 import { Dimensions, StyleSheet, TextInput, View } from 'react-native';
+import * as labels from '../config/labels.json';
+import { testProperties } from '../config/TestProperties';
 
 const width = Dimensions.get('window').width;
 
 export default class WebViewSelection extends Component {
   static navigationOptions = {
-    title: 'Enter an url and submit it.',
+    title: labels.stackNavigatorTitle.webview,
   };
 
   addhttp = (url) => {
@@ -18,7 +20,7 @@ export default class WebViewSelection extends Component {
     if (pattern.test(url)) {
       return this.props.navigation.navigate('WebViewScreen', { url: url });
     } else {
-      alert(`${url} is not a valid url!`);
+      alert(`${url} ${labels.webview.errorMessage}`);
     }
   }
 
@@ -29,9 +31,10 @@ export default class WebViewSelection extends Component {
           autoCapitalize='none'
           autoCorrect={false}
           onSubmitEditing={this.onSubmitEditing}
-          placeholder="http://www.wswebcreation.nl"
+          placeholder={labels.webview.placeHolder}
           style={styles.textInput}
           underlineColorAndroid="transparent"
+          {...testProperties(labels.webview.textAccessibilityLabel)}
         />
       </View>
     );

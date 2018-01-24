@@ -1,15 +1,14 @@
 import React from 'react';
 import {
   StyleSheet,
-  Text,
   Image,
   View,
   ListView,
 } from 'react-native';
-import { Icon } from 'react-native-elements';
 import InvertibleScrollView from 'react-native-invertible-scroll-view';
 import { ChatInput } from '../components/ChatInput';
 import { MessageBubble } from '../components/MessageBubble';
+import { CustomHeader } from '../components/CustomHeader';
 import { api } from '../config/Api';
 
 let conversation;
@@ -31,22 +30,16 @@ class ChatBox extends React.Component {
   static navigationOptions ({ navigation }) {
     const person = navigation.state.params.person;
     const headerLeft = (
-      <View style={styles.leftHeaderContainer}>
-        <Icon
-          name="ios-arrow-back"
-          iconStyle={styles.chatIcons}
-          type="ionicon"
-          onPress={() => navigation.goBack(null)}
-        />
-        <Image
-          source={{ uri: person.image }}
-          style={styles.chatInitStyle}
-          resizeMode='contain'
-        />
-        <Text style={styles.nameText}>
-          {`${person.firstName} ${person.lastName}`}
-        </Text>
-      </View>
+      <CustomHeader
+        onPress={() => navigation.goBack(null)}
+        image={
+          <Image
+            source={{ uri: person.image }}
+            style={styles.chatInitStyle}
+            resizeMode='contain'
+          />}
+        text={`${person.firstName} ${person.lastName}`}
+      />
     );
     return { headerLeft };
   };
@@ -127,5 +120,14 @@ const styles = StyleSheet.create({
   mainContainer: {
     flex: 1,
     backgroundColor: '#f2f2f2',
+  },
+  chatIcons: {
+    color: '#1b73e3',
+    marginLeft: 10,
+    marginRight: 10,
+    marginBottom: 5,
+    marginTop: 5,
+    fontSize: 28,
+    width: 35,
   },
 });

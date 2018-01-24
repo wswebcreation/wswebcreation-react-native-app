@@ -9,13 +9,15 @@ import {
 import Icon from 'react-native-vector-icons/MaterialIcons';
 import { BorderText } from '../components/BorderText';
 import { api } from '../config/Api';
+import { testProperties } from '../config/TestProperties';
 import ChatBox from './ChatBox';
+import * as labels from '../config/labels.json';
 
 const ds = new ListView.DataSource({ rowHasChanged: (r1, r2) => r1 != r2 })
 
 export default class Chats extends React.Component {
   static navigationOptions = {
-    title: 'Chats',
+    title: labels.stackNavigatorTitle.chats,
   };
 
   constructor(props) {
@@ -38,7 +40,7 @@ export default class Chats extends React.Component {
   renderRetrievingChatsContainer = () => (
     <View style={styles.loaderContainer}>
       <BorderText
-        text="Retrieving Chats..."
+        text={labels.chats.loadingText}
       />
     </View>
   );
@@ -51,7 +53,7 @@ export default class Chats extends React.Component {
     return (
       <TouchableOpacity
         onPress={() => this.props.navigation.navigate('ChatBox', { person })}
-        testID={`test-${person.firstName} ${person.lastName}`}
+        {...testProperties(`${person.firstName} ${person.lastName}`)}
       >
         <View style={styles.listItemContainer}>
           <View style={styles.iconContainer}>

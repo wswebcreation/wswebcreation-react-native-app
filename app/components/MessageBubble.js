@@ -1,6 +1,8 @@
 import React, { PureComponent } from 'react';
 import { Text, StyleSheet, View } from 'react-native';
 import PropTypes from 'prop-types';
+import * as labels from '../config/labels.json';
+import { testProperties } from '../config/TestProperties';
 
 class MessageBubble extends PureComponent {
   static defaultProps = {
@@ -14,7 +16,10 @@ class MessageBubble extends PureComponent {
   render() {
     const { placeRight, message } = this.props;
     return (
-      <View style={styles[`${placeRight ? 'right' : 'left'}Message`]}>
+      <View
+        style={styles[`${placeRight ? 'right' : 'left'}Message`]}
+        {...testProperties(`${labels.components.messageBubble[placeRight ? 'me' : 'your']} message`)}
+      >
         <Text>{message}</Text>
       </View>
     );

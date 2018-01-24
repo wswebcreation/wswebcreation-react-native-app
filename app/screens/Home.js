@@ -4,10 +4,11 @@ import Hyperlink from 'react-native-hyperlink'
 import { BorderText } from '../components/BorderText';
 
 const { height } = Dimensions.get('window');
+import * as labels from '../config/labels.json';
 
 export default class Home extends Component {
   static navigationOptions = {
-    title: 'Home',
+    title: labels.stackNavigatorTitle.home,
   };
 
   render() {

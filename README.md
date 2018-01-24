@@ -5,11 +5,12 @@
 An app which is build with React Native and will be used for test (automation) purposes.
 
 
-![wswebcreation.app](./assets/wswebcreation-site.gif)
+![wswebcreation.ios](./assets/wswebcreation-ios.gif) ![wswebcreation.android](./assets/wswebcreation-android.gif)
 
 ## About
 As mentioned above I want to use this app to explore the possibilities for testing a (React) Native app (iOS / Android).
-In order to understand what I need to test I told myself that I needed to be able to build a React Native app, so here it is :-) This app has three tabs that all do something different. More info will follow in the coming months. You can also follow my progress on my [site / blog](http://www.wswebcreation.nl/)
+In order to understand what I need to test I told myself that I needed to be able to build a React Native app, so here it is :-) 
+This app has three tabs that all do something different. More info will follow in the coming months. You can also follow my progress on my [site / blog](http://www.wswebcreation.nl/)
 
 ### Home
 This is the intro of the app
@@ -18,7 +19,8 @@ This is the intro of the app
 In the Webview you can enter an URL and load it in the Webview
 
 ### Chats
-In the chats I created multiple API calls to retrieve JSON data from [GitHubGist](https://gist.github.com/wswebcreation). When you select a chat you will get a chatbox. Here you can add chats and you will get a response (some movie onliners) from my gist.
+In the chats I created multiple API calls to retrieve JSON data from [GitHubGist](https://gist.github.com/wswebcreation). 
+When you select a chat you will get a chatbox. Here you can add chats and you will get a response (some movie onliners) from my gist.
 
 ## Install
 This will only work on a MAC so get started execute the following steps:
@@ -35,11 +37,12 @@ This will only work on a MAC so get started execute the following steps:
 - [x] Create an Android app
 - [x] Refactor code
 - [ ] Fix issue Android stackmenu and chatbox scroll to much up
-- [ ] Refactor `ChatBox.js` code
+- [x] Refactor `ChatBox.js` code
+- [x] Add test properties (`testID` for iOS and `accessibilityLabel` for Android) 
 - [ ] Add Appium tests
 - [ ] Add Detox tests
-- [ ] Add UT's with Jest and Enzyme
 - [ ] Implement different environments / build types
+- [ ] Add UT's with Jest and Enzyme
 
 ## Contributing
 If you'd like to contribute feel free to create a PR. If you have some code feedback you may also add a PR or contact me through [Gitter](https://gitter.im/wswebcreation)

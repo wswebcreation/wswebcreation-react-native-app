@@ -1,13 +1,25 @@
 import React, { Component } from 'react';
 import { StyleSheet, View, WebView } from 'react-native';
 import { BorderText } from '../components/BorderText';
+import { CustomHeader } from '../components/CustomHeader';
+import * as labels from '../config/labels.json';
 
 export default class WebViewScreen extends Component {
+  static navigationOptions({ navigation }) {
+    const headerLeft = (
+      <CustomHeader
+        onPress={() => navigation.goBack(null)}
+        text={labels.stackNavigatorTitle.webview}
+      />
+    );
+    return { headerLeft };
+  };
+
   renderLoading() {
     return (
       <View style={styles.loaderContainer}>
         <BorderText
-          text="Loading your requested website"
+          text={labels.webview.loadingText}
         />
       </View>
     )
