@@ -29,12 +29,16 @@ export default class Chats extends React.Component {
   }
 
   renderChatsOverview = () => (
-    <ListView
-      initialListSize={5}
-      enableEmptySections={true}
-      dataSource={this.state.peopleDataSource}
-      renderRow={(person) => this.renderPersonRow(person)}
-    />
+    <View
+      {...testProperties(labels.stackNavigatorTitle.chats)}
+    >
+      <ListView
+        initialListSize={5}
+        enableEmptySections={true}
+        dataSource={this.state.peopleDataSource}
+        renderRow={(person) => this.renderPersonRow(person)}
+      />
+    </View>
   );
 
   renderRetrievingChatsContainer = () => (

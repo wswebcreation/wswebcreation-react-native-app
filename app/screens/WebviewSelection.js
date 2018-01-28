@@ -22,11 +22,14 @@ export default class WebViewSelection extends Component {
     } else {
       alert(`${url} ${labels.webview.errorMessage}`);
     }
-  }
+  };
 
   render() {
     return (
-      <View style={styles.container}>
+      <View
+        style={styles.container}
+        {...testProperties(labels.stackNavigatorTitle.webview)}
+      >
         <TextInput
           autoCapitalize='none'
           autoCorrect={false}

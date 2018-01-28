@@ -5,6 +5,7 @@ import { BorderText } from '../components/BorderText';
 
 const { height } = Dimensions.get('window');
 import * as labels from '../config/labels.json';
+import { testProperties } from '../config/TestProperties';
 
 export default class Home extends Component {
   static navigationOptions = {
@@ -13,7 +14,10 @@ export default class Home extends Component {
 
   render() {
     return (
-      <ScrollView style={styles.container}>
+      <ScrollView
+        style={styles.container}
+        {...testProperties(labels.stackNavigatorTitle.home)}
+      >
         <View style={styles.headerContainer}>
           <BorderText
             text="wswebcreation"

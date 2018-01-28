@@ -15,6 +15,7 @@
     }
   },
   "stackNavigatorTitle": {
+    "chatBox": "Chat box",
     "chats": "Chats",
     "home": "Home",
     "webview": "Enter an url and submit it.",

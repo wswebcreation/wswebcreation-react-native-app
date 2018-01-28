@@ -1,5 +1,5 @@
 import React from 'react';
-import { Platform } from 'react-native';
+import { Platform, View } from 'react-native';
 import { StackNavigator, TabNavigator } from 'react-navigation';
 import { Icon } from 'react-native-elements';
 
@@ -17,12 +17,14 @@ const Tabs = TabNavigator({
       navigationOptions: {
         tabBarLabel: labels.tabNavigator.home,
         tabBarIcon: ({ tintColor }) =>
-          <Icon
-            name="ios-home-outline"
-            type="ionicon"
-            size={25}
-            color={tintColor}
-          />,
+          <View {...testProperties(labels.tabNavigator.home)}>
+            <Icon
+              name="ios-home-outline"
+              type="ionicon"
+              size={25}
+              color={tintColor}
+            />
+          </View>,
         tabBarTestIDProps: {
           ...testProperties(labels.tabNavigator.home),
         },
@@ -33,12 +35,14 @@ const Tabs = TabNavigator({
       navigationOptions: {
         tabBarLabel: labels.tabNavigator.webview,
         tabBarIcon: ({ tintColor }) =>
-          <Icon
-            name="ios-globe-outline"
-            type="ionicon"
-            size={25}
-            color={tintColor}
-          />,
+          <View {...testProperties(labels.tabNavigator.webview)}>
+            <Icon
+              name="ios-globe-outline"
+              type="ionicon"
+              size={25}
+              color={tintColor}
+            />
+          </View>,
         tabBarTestIDProps: {
           ...testProperties(labels.tabNavigator.webview),
         },
@@ -49,12 +53,14 @@ const Tabs = TabNavigator({
       navigationOptions: {
         tabBarLabel: labels.tabNavigator.chats,
         tabBarIcon: ({ tintColor }) =>
+          <View {...testProperties(labels.tabNavigator.chats)}>
           <Icon
             name="ios-chatbubbles-outline"
             type="ionicon"
             size={25}
             color={tintColor}
-          />,
+          />
+          </View>,
         tabBarTestIDProps: {
           ...testProperties(labels.tabNavigator.chats),
         },

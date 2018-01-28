@@ -10,6 +10,8 @@ import { ChatInput } from '../components/ChatInput';
 import { MessageBubble } from '../components/MessageBubble';
 import { CustomHeader } from '../components/CustomHeader';
 import { api } from '../config/Api';
+import * as labels from '../config/labels';
+import { testProperties } from '../config/TestProperties';
 
 let conversation;
 const ds = new ListView.DataSource({ rowHasChanged: (r1, r2) => r1 != r2 });
@@ -68,7 +70,10 @@ class ChatBox extends React.Component {
 
   render() {
     return (
-      <View style={styles.mainContainer}>
+      <View
+        style={styles.mainContainer}
+        {...testProperties(labels.stackNavigatorTitle.chatBox)}
+      >
         <ListView
           initialListSize={5}
           contentContainerStyle={{ justifyContent: 'flex-end' }}
