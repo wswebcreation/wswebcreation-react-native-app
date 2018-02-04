@@ -28,21 +28,55 @@ This will only work on a MAC so get started execute the following steps:
 1. Clone the project: `git clone https://github.com/wswebcreation/wswebcreation-react-native-app.git`
 2. Go to the folder: `cd wswebcreation-react-native-app`
 3. Install all (dev)dependencies: `npm install`
-4. Start the project: `react-native run-ios`
+4. Start the project for iOS `npm run ios`, for Android run `npm run android`
 5. Happy playing!
+
+## Testing
+
+### Appium
+>**Make sure you've installed Appium on your local machine. There are a lot of good articles on the web the help you with that. You can start with the [Appium Docs](http://appium.io/docs/en/about-appium/getting-started/)**
+
+>**Don't forget to set all the environment variables for Android, see [here](https://stackoverflow.com/questions/19986214/setting-android-home-enviromental-variable-on-mac-os-x) or Google it ;-)**
+
+#### Android and ChromeDriver
+When accessing a webview on Android it could be that you get this error
+
+    An unknown server-side error occurred while processing the command.
+    Original error: unknown error: Chrome version must be >= 55.0.2883.0
+
+You can fix this by checking the [docs](https://appium.io/docs/en/writing-running-appium/web/chromedriver/) on Appium by downgrading ChromeDriver during install. The right version can be found [here](https://chromedriver.storage.googleapis.com/2.35/notes.txt). 
+ 
+> **Change the number of ChromeDriver tot the latest version to see an overview of all versions**
+
+### Detox
+See **TODO**
 
 ## TODO
 - [x] Create an iOS app
 - [x] Add an APP icon
 - [x] Create an Android app
 - [x] Refactor code
-- [ ] Fix issue Android stackmenu and chatbox scroll to much up
 - [x] Refactor `ChatBox.js` code
 - [x] Add test properties (`testID` for iOS and `accessibilityLabel` for Android) 
-- [ ] Add Appium tests
-- [ ] Add Detox tests
+- [x] Add Appium setup
+- [x] Add Appium tests for navigation
+- [ ] Add Appium tests for home screen
+- [ ] Add Appium tests for webview screen
+- [ ] Add Appium tests for chat screen 
+- [ ] Add Detox setup
+- [ ] Add Detox tests for navigation
+- [ ] Add Detox tests for home screen
+- [ ] Add Detox tests for webview screen
+- [ ] Add Detox tests for chat screen
 - [ ] Implement different environments / build types
+- [ ] Disable animations for automation
+- [ ] Add mocking for the API's
 - [ ] Add UT's with Jest and Enzyme
+
+## Issues
+- [ ] Check issue in Tabnavigator with `tabBarTestIDProps`, it's not working for Android, got a workaround for it
+- [ ] Check how to "slow down" swiping on Android, looks like it is taking 2 screens at the same time
+- [ ] Fix issue Android stackmenu and chatbox scroll to much up
 
 ## Contributing
 If you'd like to contribute feel free to create a PR. If you have some code feedback you may also add a PR or contact me through [Gitter](https://gitter.im/wswebcreation)
