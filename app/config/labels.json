@@ -27,6 +27,7 @@
     "webview": "Webview"
   },
   "webview": {
+    "button": "Go",
     "errorMessage": "is not a valid url!",
     "loadingText": "Loading your requested website",
     "placeHolder": "http://www.wswebcreation.nl",

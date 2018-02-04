@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { Text, StyleSheet, View } from 'react-native';
+import { Text, StyleSheet, TouchableOpacity } from 'react-native';
 import { Icon } from 'react-native-elements';
 import PropTypes from 'prop-types';
 import { testProperties } from '../config/TestProperties';
@@ -24,21 +24,21 @@ class CustomHeader extends Component {
 
   render() {
     return (
-      <View
+      <TouchableOpacity
+        onPress={this.props.onPress}
         style={styles.leftHeaderContainer}
         {...testProperties(this.props.testID)}
       >
         <Icon
           name="ios-arrow-back"
           iconStyle={styles.icon}
-          onPress={this.props.onPress}
           type="ionicon"
         />
         {this.props.image || null}
         <Text style={styles.headerText}>
           {this.props.text}
         </Text>
-      </View>
+      </TouchableOpacity>
     );
   }
 }
