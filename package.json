@@ -20,7 +20,7 @@
     "fetch": "^1.1.0",
     "prop-types": "^15.6.0",
     "react": "^16.2.0",
-    "react-native": "^0.52.0",
+    "react-native": "^0.53.3",
     "react-native-elements": "^0.19.0",
     "react-native-hyperlink": "0.0.12",
     "react-native-invertible-scroll-view": "^1.1.0",
