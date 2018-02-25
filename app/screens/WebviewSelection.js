@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { StyleSheet, TextInput, TouchableOpacity, View } from 'react-native';
+import { Keyboard, StyleSheet, TextInput, TouchableOpacity, View } from 'react-native';
 import { BorderText } from '../components/BorderText';
 import { SCREEN_WIDTH } from '../config/Constants';
 import * as labels from '../config/labels.json';
@@ -24,6 +24,7 @@ export default class WebViewSelection extends Component {
     if (pattern.test(url)) {
       this._textInput.clear();
       this.setSiteUrl('');
+      Keyboard.dismiss();
       return this.props.navigation.navigate('WebViewScreen', { url: url });
     } else {
       alert(`${url} ${labels.webview.errorMessage}`);
