@@ -1,6 +1,6 @@
 import { ensureDirSync } from 'fs-extra';
 import { resolve } from 'path';
-import { SWIPE_DIRECTION } from './constants';
+import { ANDROID_TEXT_SELECTOR, IOS_TEXT_SELECTOR, SWIPE_DIRECTION } from './constants';
 
 /**
  * The app is opened by Appium by default, when we start a new scenario
@@ -151,4 +151,14 @@ export function tapOnScreen(location = { x: 50, y: 25 }) {
   }, {
     action: 'release',
   }]);
+}
+
+/**
+ * Get the text of an element
+ * @param element
+ * @return {string}
+ */
+export function getTextOfElement(element) {
+  const visualText = element.getText(device.isAndroid ? ANDROID_TEXT_SELECTOR : IOS_TEXT_SELECTOR);
+  return typeof visualText === 'object' ? visualText.join(' ') : visualText;
 }

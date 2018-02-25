@@ -18,7 +18,7 @@ Given(
 );
 
 Then(
-  /the (.*) screen is visible/,
+  /the (Home|Webview|Chats) screen is visible/,
   (screen) => {
     waitForScreenToBeVisible(screen);
   },

@@ -2,7 +2,7 @@ import { When } from 'cucumber';
 import { goBackFromHeader, selectScreenFromTabBar } from '../screen-objects/navigation';
 
 When(
-  /I select (.*) from the tabbar/,
+  /I select (Home|Webview|Chats) from the tabbar/,
   (screen) => {
     selectScreenFromTabBar(screen);
   },

@@ -20,7 +20,9 @@ class MessageBubble extends PureComponent {
         style={styles[`${placeRight ? 'right' : 'left'}Message`]}
         {...testProperties(`${labels.components.messageBubble[placeRight ? 'me' : 'your']} message`)}
       >
-        <Text>{message}</Text>
+        <View {...testProperties(labels.components.messageBubble.accessibilityLabel)}>
+          <Text>{message}</Text>
+        </View>
       </View>
     );
   }

@@ -1,5 +1,5 @@
 import { When, Then } from 'cucumber';
-import { chatBoxIsVisible, selectChat } from '../screen-objects/chat';
+import { chatBoxIsVisible, selectChat, verifyChatsShownInView } from '../screen-objects/chat';
 
 When(
   /I select the first chat/,
@@ -13,4 +13,11 @@ Then(
   () =>{
     chatBoxIsVisible();
   }
+);
+
+Then(
+  /the following chats would be shown/,
+  (table) => {
+    verifyChatsShownInView(table, true);
+  },
 );

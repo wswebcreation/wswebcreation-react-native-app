@@ -30,7 +30,7 @@ export default class Chats extends React.Component {
 
   renderChatsOverview = () => (
     <View
-      {...testProperties(labels.stackNavigatorTitle.chats)}
+      {...testProperties(labels.chats.window)}
     >
       <ListView
         initialListSize={5}

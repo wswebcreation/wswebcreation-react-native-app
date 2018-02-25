@@ -1,5 +1,6 @@
 {
   "chats": {
+    "window": "Chats window",
     "loadingText": "Retrieving Chats..."
   },
   "components": {
@@ -10,6 +11,7 @@
       "sendAccessibilityLabel": "Send"
     },
     "messageBubble": {
+      "accessibilityLabel": "Bubble",
       "your": "Your",
       "me": "My"
     }
