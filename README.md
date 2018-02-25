@@ -61,7 +61,7 @@ See **TODO**
 - [x] Add Appium setup
 - [x] Add Appium tests for navigation
 - [x] Add Appium tests for webview screen
-- [ ] Add Appium tests for chat screen 
+- [x] Add Appium tests for chat screen 
 - [ ] Add Detox setup
 - [ ] Add Detox tests for navigation
 - [ ] Add Detox tests for webview screen

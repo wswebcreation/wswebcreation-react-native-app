@@ -2,8 +2,12 @@ import * as labels from '../../../app/config/labels';
 import { TEST_PREFIX, SCREEN_SELECTORS, WAIT_FOR_STATE } from '../support/constants';
 import { getTextOfElement, tapOnButton, waitFor } from '../support/utils';
 
-const CHAT_BOX_SELECTORS = `${TEST_PREFIX}${labels.stackNavigatorTitle.chatBox}`;
-const CHAT_BUTTBLE_SELECTOR = `${TEST_PREFIX}${labels.components.messageBubble.accessibilityLabel}`;
+const CHAT_SELECTORS = {
+  BOX: `${TEST_PREFIX}${labels.stackNavigatorTitle.chatBox}`,
+  BUBBLE: `${TEST_PREFIX}${labels.components.messageBubble.accessibilityLabel}`,
+  INPUT: `${TEST_PREFIX}${labels.components.chatInput.inputAccessibilityLabel}`,
+  SUBMIT_BUTTON: `${TEST_PREFIX}${labels.components.chatInput.sendAccessibilityLabel}`,
+};
 
 /**
  * Select a chat
@@ -16,9 +20,9 @@ export function selectChat(name) {
 /**
  * Wait for the chat box is visible
  */
-export function chatBoxIsVisible(){
+export function chatBoxIsVisible() {
   waitFor({
-    selector: CHAT_BOX_SELECTORS,
+    selector: CHAT_SELECTORS.BOX,
     state: WAIT_FOR_STATE.VISIBLE,
     milliseconds: 6000,
   });
@@ -53,10 +57,20 @@ export function verifyChatsShownInView(table, showTextLogging = false) {
     } else {
       foundChatIndex += 1;
     }
-    expect(shownChats[foundChatIndex])
-      .to
-      .have
-      .string(expectedChat.chatMessage);
+
+    if (expectedChat.chatMessage === 'random response') {
+      console.log(`
+=======================================================================
+ Found random response was:
+ 
+ '${shownChats[foundChatIndex]}'
+=======================================================================`)
+    } else {
+      expect(shownChats[foundChatIndex])
+        .to
+        .have
+        .string(expectedChat.chatMessage);
+    }
   });
 }
 
@@ -76,7 +90,7 @@ export function verifyChatsShownInView(table, showTextLogging = false) {
  * </pre>
  */
 export function getChatsShownInView() {
-  const chatInView = $$(CHAT_BUTTBLE_SELECTOR);
+  const chatInView = $$(CHAT_SELECTORS.BUBBLE);
   const chatsText = [];
   chatInView.forEach((chat) => {
     try {
@@ -87,4 +101,13 @@ export function getChatsShownInView() {
     }
   });
   return device.isAndroid ? chatsText.reverse() : chatsText;
+}
+
+/**
+ * Add a chat
+ * @param {string} chat
+ */
+export function submitChat(chat) {
+  $(CHAT_SELECTORS.INPUT).setValue(chat);
+  tapOnButton(CHAT_SELECTORS.SUBMIT_BUTTON);
 }
