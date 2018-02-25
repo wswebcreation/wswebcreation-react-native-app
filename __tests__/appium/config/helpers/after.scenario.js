@@ -1,19 +1,28 @@
-import { After } from 'cucumber';
+import { After,  Status} from 'cucumber';
 import { ensureDirSync } from 'fs-extra';
 import { resolve } from 'path';
+import { switchToContext } from '../../screen-objects/webview';
+import { CONTEXT_REF, SCREENSHOTS_FOLDERS } from '../../support/constants';
 
 After(function (scenarioResult) {
   const world = this;
-  return (scenarioResult.status === 'failed')
+  return (scenarioResult.status === Status.FAILED)
     ? saveFailedScenarioScreenshot(world, scenarioResult)
     : scenarioResult.status;
+});
+
+/**
+ * Always turn back the context to native when we are testing with the webview
+ */
+After('@webview', () => {
+  switchToContext(CONTEXT_REF.NATIVE);
 });
 
 /**
  * Save a screenshot when a scenario failed
  */
 function saveFailedScenarioScreenshot(world, scenarioResult) {
-  const screenshotPath = resolve(process.cwd(), '.tmp/screenshots/');
+  const screenshotPath = resolve(process.cwd(), SCREENSHOTS_FOLDERS.TMP);
   ensureDirSync(screenshotPath);
   const fileName = `${scenarioResult.scenario.name
     .replace(/[^a-zA-Z0-9\s]/g, '')

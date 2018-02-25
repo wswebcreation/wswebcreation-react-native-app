@@ -1,5 +1,5 @@
 import * as labels from '../../../app/config/labels';
-import { TEST_PREFIX, SCREEN_SELECTORS } from '../support/constants';
+import { TEST_PREFIX, SCREEN_SELECTORS, WAIT_FOR_STATE } from '../support/constants';
 import { tapOnButton, waitFor } from '../support/utils';
 
 const CHAT_BOX_SELECTORS = `${TEST_PREFIX}${labels.stackNavigatorTitle.chatBox}`;
@@ -18,7 +18,7 @@ export function selectChat(name) {
 export function chatBoxIsVisible(){
   waitFor({
     selector: CHAT_BOX_SELECTORS,
-    state: 'visible',
+    state: WAIT_FOR_STATE.VISIBLE,
     milliseconds: 6000,
   });
 }

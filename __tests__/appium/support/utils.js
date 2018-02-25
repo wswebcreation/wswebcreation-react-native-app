@@ -1,6 +1,6 @@
 import { ensureDirSync } from 'fs-extra';
 import { resolve } from 'path';
-import { SCREENSHOTS_DIST_FOLDER, SWIPE_DIRECTION } from './constants';
+import { SWIPE_DIRECTION } from './constants';
 
 /**
  * The app is opened by Appium by default, when we start a new scenario

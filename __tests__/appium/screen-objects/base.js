@@ -1,5 +1,5 @@
 import * as labels from '../../../app/config/labels';
-import { TEST_PREFIX } from '../support/constants';
+import { TEST_PREFIX, WAIT_FOR_STATE } from '../support/constants';
 import { waitFor } from '../support/utils';
 
 const SCREEN_SELECTORS = {
@@ -16,7 +16,7 @@ const SCREEN_SELECTORS = {
 export function waitForScreenToBeVisible(screen) {
   waitFor({
     selector: SCREEN_SELECTORS[screen.toLowerCase()],
-    state: 'visible',
+    state: WAIT_FOR_STATE.VISIBLE,
     milliseconds: 6000,
   });
 }
