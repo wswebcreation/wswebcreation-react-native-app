@@ -60,15 +60,14 @@ See **TODO**
 - [x] Add test properties (`testID` for iOS and `accessibilityLabel` for Android) 
 - [x] Add Appium setup
 - [x] Add Appium tests for navigation
-- [ ] Add Appium tests for home screen
-- [ ] Add Appium tests for webview screen
+- [x] Add Appium tests for webview screen
 - [ ] Add Appium tests for chat screen 
 - [ ] Add Detox setup
 - [ ] Add Detox tests for navigation
-- [ ] Add Detox tests for home screen
 - [ ] Add Detox tests for webview screen
 - [ ] Add Detox tests for chat screen
 - [ ] Implement different environments / build types
+- [ ] Add deeplink
 - [ ] Disable animations for automation
 - [ ] Add mocking for the API's
 - [ ] Add UT's with Jest and Enzyme
