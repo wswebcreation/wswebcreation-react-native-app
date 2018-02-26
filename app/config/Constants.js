@@ -1,6 +1,10 @@
 import { Dimensions, Platform } from 'react-native';
+import Config from 'react-native-config';
 
-export const BASE_URL = 'https://gist.githubusercontent.com/wswebcreation/';
+/**
+ * API stuff
+ */
+export const BASE_URL = Config.BASE_URL;
 export const API_HEADERS = {
   'Content-Type': 'application/x-www-form-urlencoded',
 };
@@ -8,8 +12,18 @@ export const CONVERSATION_URL = '649da4cc49beb5bc180534e039535168/raw/2975c9f427
 export const CHAT_HISTORY_URL = 'b1979ed905833186e5526a3bcf31bc76/raw/7d8219c2d6d1c5f37d535018fd6c56ec9eb2a849/chat.history.json';
 export const ONE_LINERS_URL = '46101d9f04bbc90622e68c6f2ac2bdce/raw/88f23f10983d99dbf98524a487870ff9bf6684c7/onliners.response.json';
 
+/**
+ * Device stuff
+ */
 export const IS_IOS = Platform.OS === 'ios';
 export const {
   width: SCREEN_WIDTH,
   height: SCREEN_HEIGHT,
 } = Dimensions.get('window');
+export const ENV_STRINGS = {
+  AUTOMATION: 'automation',
+  DEV: 'development',
+};
+export const ENVIRONMENT = Config.ENVIRONMENT;
+export const IS_AUTOMATION_BUILD = ENVIRONMENT === ENV_STRINGS.AUTOMATION;
+export const TESTING_ENVIRONMENTS = [ENV_STRINGS.DEV, ENV_STRINGS.AUTOMATION];

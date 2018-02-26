@@ -31,6 +31,16 @@ This will only work on a MAC so get started execute the following steps:
 4. Start the project for iOS `npm run ios`, for Android run `npm run android`
 5. Happy playing!
 
+## Different environment builds
+This project already supports different environment builds. This means that
+
+- specific configurations can be save into different environment files, see in the root of the project the `.env` and `.env.{environment}`-files
+- different builds can be created with running for example the command `npm start ios.automation` or `npm start android.automation`
+
+They advantage of this will be that config variables can be exposed to the JS code in React Native in an easy way.
+
+> Currently only the `BASE_URL` and the `ENVIRONMENT` variables are saved and used from the `.env`-files, but in the future this can be more.  
+
 ## Testing
 
 ### Appium
@@ -66,7 +76,7 @@ See **TODO**
 - [ ] Add Detox tests for navigation
 - [ ] Add Detox tests for webview screen
 - [ ] Add Detox tests for chat screen
-- [ ] Implement different environments / build types
+- [x] Implement different environments / build types
 - [ ] Add deeplink
 - [ ] Disable animations for automation
 - [ ] Add mocking for the API's

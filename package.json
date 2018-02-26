@@ -4,9 +4,11 @@
   "private": true,
   "scripts": {
     "android": "react-native run-android",
+    "android.automation": "ENVFILE=.env.automation react-native run-android",
     "appium.android": "node_modules/.bin/wdio __tests__/appium/config/wdio.android.conf.js",
     "appium.ios": "node_modules/.bin/wdio __tests__/appium/config/wdio.ios.conf.js",
     "ios": "react-native run-ios",
+    "ios.automation": "ENVFILE=.env.automation react-native run-ios",
     "postinstall": "rm ./node_modules/react-native/local-cli/core/__fixtures__/files/package.json",
     "start": "node node_modules/react-native/local-cli/cli.js start",
     "start.ios.simulator": "node ./start.ios.simulator.js"
@@ -21,6 +23,7 @@
     "prop-types": "^15.6.0",
     "react": "^16.2.0",
     "react-native": "^0.53.3",
+    "react-native-config": "^0.11.5",
     "react-native-elements": "^0.19.0",
     "react-native-hyperlink": "0.0.12",
     "react-native-invertible-scroll-view": "^1.1.0",
