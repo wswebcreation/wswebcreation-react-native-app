@@ -5,7 +5,14 @@ import {
   CONTEXT_REF,
   DOCUMENT_READY_STATE
 } from '../support/constants';
-import { swipe, tapOnButton, waitFor } from '../support/utils';
+import {
+  acceptAlert,
+  getAlertText,
+  swipe,
+  tapOnButton,
+  waitFor,
+  waitForAlert
+} from '../support/utils';
 
 const WEBVIEW_SELECTORS = {
   INPUT: `${TEST_PREFIX}${labels.webview.textAccessibilityLabel}`,
@@ -55,7 +62,7 @@ export function switchToContext(context) {
  * Return the current context
  * @return {string} The current context
  */
-export function getCurrentContext(){
+export function getCurrentContext() {
   return device.context();
 }
 
@@ -63,7 +70,7 @@ export function getCurrentContext(){
  * Returns an object with the list of all available contexts
  * @return {object} An object containing the list of all available contexts
  */
-export function getCurrentContexts(){
+export function getCurrentContexts() {
   return device.contexts().value;
 }
 
@@ -149,6 +156,19 @@ export function waitForDocumentFullyLoaded() {
     'Website not loaded',
     100
   );
+}
+
+/**
+ * Check if the alert is shown
+ * @param {string} url
+ */
+export function validateAlertIsShown(url) {
+  waitForAlert();
+  expect(getAlertText())
+    .to
+    .have
+    .string(`Alert http://${url} is not a valid url!`);
+  acceptAlert();
 }
 
 

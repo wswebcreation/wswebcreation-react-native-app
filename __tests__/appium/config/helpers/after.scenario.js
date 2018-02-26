@@ -15,7 +15,11 @@ After(function (scenarioResult) {
  * Always turn back the context to native when we are testing with the webview
  */
 After('@webview', () => {
-  switchToContext(CONTEXT_REF.NATIVE);
+  try {
+    switchToContext(CONTEXT_REF.NATIVE);
+  } catch (error) {
+    // Do nothing
+  }
 });
 
 /**

@@ -1,17 +1,27 @@
 import { When, Then } from 'cucumber';
 import {
   categoryTestautomationIsShown,
-  enterURL, openTestautomationCategory,
+  enterURL,
+  openTestautomationCategory,
   switchToContext,
+  validateAlertIsShown,
   validateCanNativelyScrollWebview,
   validateCanScrollWebviewWithJavascript,
   waitForWebsiteLoaded
 } from '../screen-objects/webview';
+import { INCORRECT_URL } from '../support/constants';
 
 When(
   /I want to visit (.*)/,
   (url) => {
     enterURL(url);
+  },
+);
+
+When(
+  /I enter an incorrect url/,
+  () => {
+    enterURL(INCORRECT_URL);
   },
 );
 
@@ -54,5 +64,12 @@ Then(
   /the category testautomation is shown/,
   () => {
     categoryTestautomationIsShown();
+  }
+);
+
+Then(
+  /an error message is shown/,
+  () => {
+    validateAlertIsShown(INCORRECT_URL);
   }
 );

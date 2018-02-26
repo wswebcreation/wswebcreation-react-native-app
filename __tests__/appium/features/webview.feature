@@ -25,3 +25,7 @@ Feature: Use the webview
     And I open the menu and select the testautomation category
     Then the category testautomation is shown
 
+  Scenario: As an automation engineer I want to validate the error pop
+    When I enter an incorrect url
+    Then an error message is shown
+

@@ -1,6 +1,14 @@
 import { ensureDirSync } from 'fs-extra';
 import { resolve } from 'path';
-import { ANDROID_TEXT_SELECTOR, IOS_TEXT_SELECTOR, SWIPE_DIRECTION } from './constants';
+import {
+  ANDROID_ACCEPT_ALERT_SELECTOR,
+  ANDROID_ALERT_MESSAGE_SELECTOR,
+  ANDROID_ALERT_TITLE_SELECTOR,
+  ANDROID_TEXT_SELECTOR,
+  IOS_ALERT_SELECTOR,
+  IOS_TEXT_SELECTOR,
+  SWIPE_DIRECTION
+} from './constants';
 
 /**
  * The app is opened by Appium by default, when we start a new scenario
@@ -84,7 +92,7 @@ export function swipe(from, to) {
   device.touchPerform([{
     action: 'press',
     options: pressOptions,
-  },{
+  }, {
     action: 'moveTo',
     options: {
       x: moveToScreenCoordinates.x - pressOptions.x,
@@ -161,4 +169,32 @@ export function tapOnScreen(location = { x: 50, y: 25 }) {
 export function getTextOfElement(element) {
   const visualText = element.getText(device.isAndroid ? ANDROID_TEXT_SELECTOR : IOS_TEXT_SELECTOR);
   return typeof visualText === 'object' ? visualText.join(' ') : visualText;
+}
+
+/**
+ * Accept the alert text on a cross-platform way
+ */
+export function acceptAlert() {
+  return device.isAndroid ? tapOnButton(ANDROID_ACCEPT_ALERT_SELECTOR) : device.alertAccept();
+}
+
+/**
+ * Get the alert text on a cross-platform way
+ * @return {string}
+ */
+export function getAlertText() {
+  const alertText =  device.isAndroid
+    ? `${$(ANDROID_ALERT_TITLE_SELECTOR).getText()} ${$(ANDROID_ALERT_MESSAGE_SELECTOR).getText()}`
+    : device.alertText();
+  return alertText.replace('\n', ' ');
+}
+
+/**
+ * Wait for the alert to exist
+ */
+export function waitForAlert() {
+  waitFor({
+    selector: device.isAndroid ? ANDROID_ALERT_TITLE_SELECTOR : IOS_ALERT_SELECTOR,
+    state: 'exist',
+  });
 }
