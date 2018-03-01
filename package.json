@@ -11,7 +11,9 @@
     "ios.automation": "ENVFILE=.env.automation react-native run-ios",
     "postinstall": "rm ./node_modules/react-native/local-cli/core/__fixtures__/files/package.json",
     "start": "node node_modules/react-native/local-cli/cli.js start",
-    "start.ios.simulator": "node ./start.ios.simulator.js"
+    "start.ios.simulator": "node ./start.ios.simulator.js",
+    "detox.ios": "detox test -c ios.sim.debug",
+    "test:e2e:build": "detox build"
   },
   "rnpm": {
     "assets": [
@@ -39,6 +41,7 @@
     "babel-register": "^6.26.0",
     "chai": "^4.1.2",
     "cucumber": "^2.3.1",
+    "detox": "^7.1.0",
     "eslint": "^4.3.0",
     "eslint-config-airbnb": "^15.1.0",
     "eslint-import-resolver-react-native": "^0.1.0",
@@ -47,6 +50,7 @@
     "eslint-plugin-react": "^7.1.0",
     "eslint-plugin-react-native": "^3.1.0",
     "fs-extra": "^5.0.0",
+    "jest": "^22.4.2",
     "multiple-cucumber-html-reporter": "^1.4.1",
     "react-test-renderer": "16.0.0",
     "wdio-appium-service": "^0.2.3",
@@ -66,5 +70,17 @@
     "cucumberjs"
   ],
   "author": "Wim Selles - wswebcreation",
-  "license": "MIT"
+  "license": "MIT",
+  "detox": {
+    "test-runner": "jest",
+    "runner-config": "e2e/config.json",
+    "configurations": {
+      "ios.sim.debug": {
+        "binaryPath": "ios/build/Build/Products/Debug-iphonesimulator/wswebcreation.app",
+        "build": "xcodebuild -project ios/wswebcreation.xcodeproj -scheme wswebcreation -configuration Debug -sdk iphonesimulator -derivedDataPath ios/build",
+        "type": "ios.simulator",
+        "name": "iPhone 8"
+      }
+    }
+  }
 }

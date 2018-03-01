@@ -18,8 +18,8 @@
   },
   "stackNavigatorTitle": {
     "chatBox": "Chat box",
-    "chats": "Chats",
-    "home": "Home",
+    "chats": "Chats screen",
+    "home": "Home screen",
     "webview": "Enter an url and submit it.",
     "goBackAccessibilityLabel": "Go back"
   },
