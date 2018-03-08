@@ -12,7 +12,7 @@
     "postinstall": "rm ./node_modules/react-native/local-cli/core/__fixtures__/files/package.json",
     "start": "node node_modules/react-native/local-cli/cli.js start",
     "start.ios.simulator": "node ./start.ios.simulator.js",
-    "detox.ios": "detox test --loglevel info -c ios.sim.debug",
+    "detox.ios": "detox test -c ios.sim.debug",
     "build.detox": "detox build"
   },
   "rnpm": {

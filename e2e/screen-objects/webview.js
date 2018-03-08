@@ -15,3 +15,14 @@ export async function enterURL(url) {
   await element(by.id(WEBVIEW_SELECTORS.INPUT)).replaceText(url.toLowerCase());
   await element(by.id(WEBVIEW_SELECTORS.BUTTON)).tap();
 }
+
+/**
+ * Check if the alert is shown
+ *
+ * @param {string} url
+ */
+export async function validateAlertIsShown(url) {
+  await expect(element(by.text('Alert'))).toBeVisible();
+  await expect(element(by.text(`http://${url} is not a valid url!`))).toBeVisible();
+  await element(by.text('OK')).tap();
+}
