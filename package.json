@@ -30,7 +30,7 @@
     "react-native-keyboard-aware-scroll-view": "^0.4.3",
     "react-native-keyboard-spacer": "^0.4.1",
     "react-native-vector-icons": "^4.5.0",
-    "react-navigation": "^1.0.0-beta.27"
+    "react-navigation": "^1.2.1"
   },
   "devDependencies": {
     "babel-eslint": "^8.0.1",
@@ -49,6 +49,7 @@
     "fs-extra": "^5.0.0",
     "multiple-cucumber-html-reporter": "^1.4.1",
     "react-test-renderer": "16.0.0",
+    "stubs": "^3.0.0",
     "wdio-appium-service": "^0.2.3",
     "wdio-cucumber-framework": "^1.0.3",
     "wdio-spec-reporter": "^0.1.3",
