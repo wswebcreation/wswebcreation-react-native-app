@@ -7,7 +7,7 @@ const TABBAR_SELECTORS = {
   chats: `${TEST_PREFIX}${labels.tabNavigator.chats}`,
 };
 
-// const HEADER_BACK_BUTTON = `${TEST_PREFIX}${labels.stackNavigatorTitle.goBackAccessibilityLabel}`;
+export const HEADER_BACK_BUTTON = `${TEST_PREFIX}${labels.stackNavigatorTitle.goBackAccessibilityLabel}`;
 
 /**
  * Select screen from the tabbar
@@ -23,9 +23,11 @@ export function selectScreenFromTabBar(screen) {
   return element(by.id(TABBAR_SELECTORS[screen.toLowerCase()])).atIndex(0).tap();
 }
 
-// /**
-//  * Click on the back button in the header
-//  */
-// export function goBackFromHeader(){
-//   tapOnButton(HEADER_BACK_BUTTON);
-// }
+/**
+ * Get the header back button
+ *
+ * @return {Promise}
+ */
+export function headerBackButton(){
+  return element(by.id(HEADER_BACK_BUTTON));
+}

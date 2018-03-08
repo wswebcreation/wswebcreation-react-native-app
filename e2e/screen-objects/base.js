@@ -1,10 +1,11 @@
 import * as labels from '../../app/config/labels';
-import { TEST_PREFIX, WAIT_FOR_STATE } from '../support/constants';
+import { TEST_PREFIX } from '../support/constants';
 
 const SCREEN_SELECTORS = {
   home: `${TEST_PREFIX}${labels.stackNavigatorTitle.home}`,
   webview: `${TEST_PREFIX}${labels.stackNavigatorTitle.webview}`,
   chats: `${TEST_PREFIX}${labels.chats.window}`,
+  chatbox: `${TEST_PREFIX}${labels.stackNavigatorTitle.chatBox}`,
 };
 
 /**

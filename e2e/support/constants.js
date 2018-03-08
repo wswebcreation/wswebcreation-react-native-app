@@ -1,6 +1,7 @@
 export const TEST_PREFIX = 'test-';
 export const SCREENS = {
   CHATS: 'chats',
+  CHAT_BOX: 'chatbox',
   HOME: 'home',
   WEBVIEW: 'webview',
 };
