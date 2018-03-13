@@ -41,6 +41,31 @@ They advantage of this will be that config variables can be exposed to the JS co
 
 > Currently only the `BASE_URL` and the `ENVIRONMENT` variables are saved and used from the `.env`-files, but in the future this can be more.  
 
+## Disable Animations
+Because of the different environments we can also pinpoint which type of build we have. For for example the automation build we want to limit the amount of animations.
+Animations can be a killer for waits and can increase the execution time of tests. With some small changes in the code there is a possibility to create a specific automation build without animations.
+
+In most cases all libraries use the `Animated`-component of React Native to animate stuff. [`timing`](https://facebook.github.io/react-native/docs/animated.html#timing) or [`spring`](https://facebook.github.io/react-native/docs/animated.html#spring) are used to add the durations and so on.
+These methods can easily be stubbed which you will find below
+
+### Implementation
+See the [`index.js`](./index.js) file in the root of the project. There you will see two extra lines of code
+
+```js
+import { setupAutomation } from './app/config/TestProperties';
+
+setupAutomation();
+```
+
+They need to be added and executed at the highest level of the app, to be able to stub all the animations, and refer to the [`TestProperties.js`](./app/config/TestProperties.js). 
+Together with a stub library called `stubs` we can stub almost all animations that come from the `Animation`-component from React Native. 
+
+This will give a build like below. On the left iPhone you see the normal build, on the right the automation build with no animation when the chat is loaded on the card
+
+> *In my testapp I use [react-navigation](https://github.com/react-navigation/react-navigation). You can do all nice things with animations and custom animations. In my app I've chosen to use the default animation which was "harder" to stub, but with a dirty little hack you understand and see the difference ;-).* 
+
+![wswebcreation.ios.disable.animation](./assets/wswebcreation-disable-animation.gif)
+
 ## Testing
 
 ### Appium
@@ -78,7 +103,7 @@ See **TODO**
 - [ ] Add Detox tests for chat screen
 - [x] Implement different environments / build types
 - [ ] Add deeplink
-- [ ] Disable animations for automation
+- [x] Disable animations for automation
 - [ ] Add mocking for the API's
 - [ ] Add UT's with Jest and Enzyme
 
