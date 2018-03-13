@@ -1,4 +1,5 @@
 import { Animated } from 'react-native';
+import getTransitionConfig from 'react-navigation/src/views/CardStack/TransitionConfigs';
 import {
   ENVIRONMENT,
   IS_AUTOMATION_BUILD,
@@ -33,12 +34,10 @@ function disableAnimations() {
   const stubs = require('stubs');
   const AnimatedTiming = Animated.timing;
   stubs(Animated, 'timing', (...props) => {
-    console.log(props);
     props[1].duration = 0; // eslint-disable-line no-param-reassign
     props[1].delay = 0; // eslint-disable-line no-param-reassign
-    props[1].stiffness = 10000; // eslint-disable-line no-param-reassign
-    props[1].damping = 10000; // eslint-disable-line no-param-reassign
-    props[1].mass = 10000; // eslint-disable-line no-param-reassign
     return AnimatedTiming(...props);
   });
+  // @todo: Dirty hack for now to stub the card duration, need to find a better way
+  stubs(getTransitionConfig, 'getTransitionConfig', () => ({}));
 }
