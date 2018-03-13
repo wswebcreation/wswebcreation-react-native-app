@@ -46,7 +46,7 @@ Because of the different environments we can also pinpoint which type of build w
 Animations can be a killer for waits and can increase the execution time of tests. With some small changes in the code there is a possibility to create a specific automation build without animations.
 
 In most cases all libraries use the `Animated`-component of React Native to animate stuff. [`timing`](https://facebook.github.io/react-native/docs/animated.html#timing) or [`spring`](https://facebook.github.io/react-native/docs/animated.html#spring) are used to add the durations and so on.
-These methods can easily be stubbed which you will find below
+These methods can easily be stubbed which you will find below (with some help of my friend and colleague [Lucas Bento](https://github.com/lucasbento))
 
 ### Implementation
 See the [`index.js`](./index.js) file in the root of the project. There you will see two extra lines of code
