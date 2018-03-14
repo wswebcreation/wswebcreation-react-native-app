@@ -97,10 +97,14 @@ See **TODO**
 - [x] Add Appium tests for navigation
 - [x] Add Appium tests for webview screen
 - [x] Add Appium tests for chat screen 
-- [ ] Add Detox setup
-- [ ] Add Detox tests for navigation
-- [ ] Add Detox tests for webview screen
-- [ ] Add Detox tests for chat screen
+- [x] Add Detox setup iOS
+- [x] Add Detox tests for navigation iOS
+- [x] Add Detox tests for webview screen iOS
+- [x] Add Detox tests for chat screen iOS
+- [ ] Add Detox setup Android
+- [ ] Add Detox tests for navigation Android
+- [ ] Add Detox tests for webview screen Android
+- [ ] Add Detox tests for chat screen Android
 - [x] Implement different environments / build types
 - [ ] Add deeplink
 - [x] Disable animations for automation
