@@ -1,5 +1,5 @@
-import React from 'react';
-import { Platform, View } from 'react-native';
+import React, { Component } from 'react';
+import { Linking, Platform, View } from 'react-native';
 import { StackNavigator, TabNavigator } from 'react-navigation';
 import { Icon } from 'react-native-elements';
 
@@ -54,12 +54,12 @@ const Tabs = TabNavigator({
         tabBarLabel: labels.tabNavigator.chats,
         tabBarIcon: ({ tintColor }) =>
           <View {...testProperties(labels.tabNavigator.chats)}>
-          <Icon
-            name="ios-chatbubbles-outline"
-            type="ionicon"
-            size={25}
-            color={tintColor}
-          />
+            <Icon
+              name="ios-chatbubbles-outline"
+              type="ionicon"
+              size={25}
+              color={tintColor}
+            />
           </View>,
         tabBarTestIDProps: {
           ...testProperties(labels.tabNavigator.chats),
@@ -89,17 +89,20 @@ const Tabs = TabNavigator({
   }
 );
 
-export const StackMainNavigation = StackNavigator({
+const Routes = {
   Root: {
     screen: Tabs,
   },
   ChatBox: {
     screen: ChatBox,
+    path: 'chatbox/:user',
   },
   WebViewScreen: {
     screen: WebViewScreen,
   },
-}, {
+};
+
+export const Router = StackNavigator(Routes, {
   navigationOptions: {
     headerTitleStyle: {
       alignSelf: 'center',
@@ -108,3 +111,43 @@ export const StackMainNavigation = StackNavigator({
     },
   }
 });
+
+export class StackMainNavigation extends Component {
+  // constructor(props) {
+  //   super(props);
+  // }
+  //
+  // componentDidMount() {
+  //   if (Platform.OS === 'android') {
+  //     Linking.getInitialURL().then(url => {
+  //       this.navigate(url);
+  //     });
+  //   } else {
+  //     Linking.addEventListener('url', this.handleOpenURL);
+  //   }
+  // }
+  //
+  // componentWillUnmount() {
+  //   Linking.removeEventListener('url', this.handleOpenURL);
+  // }
+  //
+  // handleOpenURL = (event) => {
+  //   this.navigate(event.url);
+  // };
+  //
+  // navigate = (url) => {
+  //   const { navigate } = this.props.navigation;
+  //   const route = url.replace(/.*?:\/\//g, '');
+  //   const id = route.match(/\/([^\/]+)\/?$/)[1];
+  //   const routeName = route.split('/')[0];
+  //
+  //   alert(`${route} ${id} ${routeName}`)
+  //
+  // };
+
+  render() {
+    return (
+      <Router />
+    );
+  }
+}
