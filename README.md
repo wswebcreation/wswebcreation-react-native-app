@@ -66,6 +66,23 @@ This will give a build like below. On the left iPhone you see the normal build, 
 
 ![wswebcreation.ios.disable.animation](./assets/wswebcreation-disable-animation.gif)
 
+## Storybook
+This project also has storybook implemented, for more info about storybook please check [here](https://github.com/storybooks/storybook/tree/master/app/react-native).
+
+The basic idea behind storybook is that you can develop individual React Native components without running your app. But it can also be used to individually (automatically) test React Native components in the app. See also [Deep Linking](./README.md#deep-linking) for more info.
+
+To manually start storybook in this app execute the following steps:
+
+1. Run `npm run storybook`
+2. Build the app with for example `npm run ios` or `npm run android`.
+
+You can then walk through the components like below.
+
+![wswebcreation.ios.storybook](./assets/wswebcreation-storybook.gif)
+
+## Deep Linking
+See **TODO**
+
 ## Testing
 
 ### Appium
@@ -102,6 +119,7 @@ See **TODO**
 - [ ] Add Detox tests for webview screen
 - [ ] Add Detox tests for chat screen
 - [x] Implement different environments / build types
+- [x] Add storybook
 - [ ] Add deeplink
 - [x] Disable animations for automation
 - [ ] Add mocking for the API's

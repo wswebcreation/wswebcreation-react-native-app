@@ -22,6 +22,7 @@ class BorderText extends PureComponent {
 
 const styles = StyleSheet.create({
   headerBorder: {
+    backgroundColor: '#fff',
     borderColor: '#000',
     borderWidth: 3,
     ...Platform.select({
