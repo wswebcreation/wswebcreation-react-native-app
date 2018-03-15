@@ -81,7 +81,31 @@ You can then walk through the components like below.
 ![wswebcreation.ios.storybook](./assets/wswebcreation-storybook.gif)
 
 ## Deep Linking
-See **TODO**
+Deeplinking has been implemented in this app through `react-navigation`, see [here](https://reactnavigation.org/docs/deep-linking.html) for more info.
+With deeplinking we can now easily directly go to specific screens or screens that are only available in a specific build. 
+
+### Example: storybook
+For testing specific components in the app I've implemented storybook, see [here](./README.md#storybook). Storybook is only available on a `dev` or `automation`-build, see [Different environment builds](./README.md#different-environment-builds). Run your build and then run it with one of the following commands
+
+```bash
+# For iOS use
+xcrun simctl openurl booted wswebcreationapp://storybook
+
+# For Android use
+adb shell am start -W -a android.intent.action.VIEW -d "wswebcreationapp://wswebcreationapp/storybook" com.wswebcreation
+```
+
+You are now able to access storybook as shown below.
+
+![wswebcreation.ios.deeplinking](./assets/wswebcreation-deeplinking.gif)
+
+### Example: Chatbox shortcut
+In production it could also be that you receive a link to open for example a chat directly. In the gif below you will see how that works in my demo app. Here we start the app with a deeplink to open the chatbox of one of our friends with `xcrun simctl openurl booted wswebcreationapp://chatbox/name`
+
+
+> **I've mocked the data retrieved in the [`ChatBox.js`](./app/screens/ChatBox.js) for demo purpose. You can add whatever name you want, you will always retrieve Dick Tracy ;-), but I hope you understand how it works and how it can benefit you during testing.**
+
+![wswebcreation.ios.deeplinking.chatbox](./assets/wswebcreation-deeplinking-chatbox.gif)
 
 ## Testing
 
@@ -120,7 +144,7 @@ See **TODO**
 - [ ] Add Detox tests for chat screen
 - [x] Implement different environments / build types
 - [x] Add storybook
-- [ ] Add deeplink
+- [x] Add deeplink
 - [x] Disable animations for automation
 - [ ] Add mocking for the API's
 - [ ] Add UT's with Jest and Enzyme

@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { Linking, Platform, View } from 'react-native';
+import { Platform, View } from 'react-native';
 import { StackNavigator, TabNavigator } from 'react-navigation';
 import { Icon } from 'react-native-elements';
 
@@ -8,6 +8,8 @@ import WebViewScreen from '../screens/Webview';
 import Chats from '../screens/Chats';
 import ChatBox from '../screens/ChatBox';
 import WebViewSelection from '../screens/WebviewSelection';
+import StorybookInApp from '../../storybook/storybook.app';
+import { APP_URI, ENVIRONMENT, IS_IOS, TESTING_ENVIRONMENTS } from './Constants';
 import { testProperties } from './TestProperties';
 import * as labels from './labels.json';
 
@@ -95,14 +97,24 @@ const Routes = {
   },
   ChatBox: {
     screen: ChatBox,
-    path: 'chatbox/:user',
+    path:'chatbox/:person',
   },
   WebViewScreen: {
     screen: WebViewScreen,
   },
 };
 
-export const Router = StackNavigator(Routes, {
+if (TESTING_ENVIRONMENTS.includes(ENVIRONMENT)) {
+  Routes.StoryBook = {
+    screen: StorybookInApp,
+    navigationOptions: {
+      header: null
+    },
+    path: 'storybook/'
+  }
+}
+
+const Router = StackNavigator(Routes, {
   navigationOptions: {
     headerTitleStyle: {
       alignSelf: 'center',
@@ -113,41 +125,11 @@ export const Router = StackNavigator(Routes, {
 });
 
 export class StackMainNavigation extends Component {
-  // constructor(props) {
-  //   super(props);
-  // }
-  //
-  // componentDidMount() {
-  //   if (Platform.OS === 'android') {
-  //     Linking.getInitialURL().then(url => {
-  //       this.navigate(url);
-  //     });
-  //   } else {
-  //     Linking.addEventListener('url', this.handleOpenURL);
-  //   }
-  // }
-  //
-  // componentWillUnmount() {
-  //   Linking.removeEventListener('url', this.handleOpenURL);
-  // }
-  //
-  // handleOpenURL = (event) => {
-  //   this.navigate(event.url);
-  // };
-  //
-  // navigate = (url) => {
-  //   const { navigate } = this.props.navigation;
-  //   const route = url.replace(/.*?:\/\//g, '');
-  //   const id = route.match(/\/([^\/]+)\/?$/)[1];
-  //   const routeName = route.split('/')[0];
-  //
-  //   alert(`${route} ${id} ${routeName}`)
-  //
-  // };
-
   render() {
     return (
-      <Router />
+      <Router
+        uriPrefix={IS_IOS ? `${APP_URI}://` : `${APP_URI}://${APP_URI}/`}
+      />
     );
   }
 }
