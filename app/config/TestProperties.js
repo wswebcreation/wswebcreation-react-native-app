@@ -7,12 +7,12 @@ import {
   TESTING_ENVIRONMENTS
 } from './Constants';
 
-
-export function testProperties(id) { // eslint-disable-line import/prefer-default-export
+export function testProperties(id) {
   if (TESTING_ENVIRONMENTS.includes(ENVIRONMENT)) {
-    // Detox checks if an element is accessible, so that's why `accessible: true,` needs to be added
+    // Detox checks if an element is accessible, so that's why `accessible: true,` needs to be added,
+    // this will only be done with on the DEV build
     const accessible = {
-      accessible: true
+      accessible: !IS_AUTOMATION_BUILD
     };
 
     if (IS_IOS) {

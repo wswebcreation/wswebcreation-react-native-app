@@ -10,46 +10,26 @@ import { ChatInput } from '../components/ChatInput';
 import { MessageBubble } from '../components/MessageBubble';
 import { CustomHeader } from '../components/CustomHeader';
 import { api } from '../config/Api';
+import { DEEPLINK_MOCKED_USER } from '../config/Constants';
 import * as labels from '../config/labels';
 import { testProperties } from '../config/TestProperties';
 
 let conversation;
 const ds = new ListView.DataSource({ rowHasChanged: (r1, r2) => r1 != r2 });
-const defaultHeight = 30;
-const deepLinkUser = {
-  'firstName': 'Dick',
-  'lastName': 'Tracy',
-  'conversation': [
-    {
-      'placeRight': true,
-      'message': 'So it seems like this internet thing is here to stay, huh?'
-    },
-    {
-      'placeRight': false,
-      'message': 'Hey wassup?'
-    }
-  ],
-  'read': true,
-  'lastMessage': 'So it seems like this internet thing is here to stay, huh?',
-  'date': '09-Dec-2017',
-  'time': '1:33 PM',
-  'image': 'https://randomuser.me/api/portraits/men/3.jpg'
-};
 
 class ChatBox extends React.Component {
   constructor(props) {
     super(props);
-    conversation = this.props.navigation.state.params.person.conversation || deepLinkUser.conversation;
+    conversation = this.props.navigation.state.params.person.conversation || DEEPLINK_MOCKED_USER.conversation;
     this.state = {
       message: '',
       placeRight: true,
       datasource: ds.cloneWithRows(conversation),
-      height: defaultHeight
     };
   }
 
   static navigationOptions({ navigation }) {
-    const person = typeof navigation.state.params.person === 'string' ? deepLinkUser : navigation.state.params.person;
+    const person = typeof navigation.state.params.person === 'string' ? DEEPLINK_MOCKED_USER : navigation.state.params.person;
     const headerLeft = (
       <CustomHeader
         onPress={() => navigation.goBack(null)}
