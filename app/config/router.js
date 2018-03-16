@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { Component } from 'react';
 import { Platform, View } from 'react-native';
 import { StackNavigator, TabNavigator } from 'react-navigation';
 import { Icon } from 'react-native-elements';
@@ -8,6 +8,8 @@ import WebViewScreen from '../screens/Webview';
 import Chats from '../screens/Chats';
 import ChatBox from '../screens/ChatBox';
 import WebViewSelection from '../screens/WebviewSelection';
+import StorybookInApp from '../../storybook/storybook.app';
+import { APP_URI, ENVIRONMENT, IS_IOS, TESTING_ENVIRONMENTS } from './Constants';
 import { testProperties } from './TestProperties';
 import * as labels from './labels.json';
 
@@ -54,12 +56,12 @@ const Tabs = TabNavigator({
         tabBarLabel: labels.tabNavigator.chats,
         tabBarIcon: ({ tintColor }) =>
           <View {...testProperties(labels.tabNavigator.chats)}>
-          <Icon
-            name="ios-chatbubbles-outline"
-            type="ionicon"
-            size={25}
-            color={tintColor}
-          />
+            <Icon
+              name="ios-chatbubbles-outline"
+              type="ionicon"
+              size={25}
+              color={tintColor}
+            />
           </View>,
         tabBarTestIDProps: {
           ...testProperties(labels.tabNavigator.chats),
@@ -89,17 +91,30 @@ const Tabs = TabNavigator({
   }
 );
 
-export const StackMainNavigation = StackNavigator({
+const Routes = {
   Root: {
     screen: Tabs,
   },
   ChatBox: {
     screen: ChatBox,
+    path:'chatbox/:person',
   },
   WebViewScreen: {
     screen: WebViewScreen,
   },
-}, {
+};
+
+if (TESTING_ENVIRONMENTS.includes(ENVIRONMENT)) {
+  Routes.StoryBook = {
+    screen: StorybookInApp,
+    navigationOptions: {
+      header: null
+    },
+    path: 'storybook/'
+  }
+}
+
+const Router = StackNavigator(Routes, {
   navigationOptions: {
     headerTitleStyle: {
       alignSelf: 'center',
@@ -108,3 +123,13 @@ export const StackMainNavigation = StackNavigator({
     },
   }
 });
+
+export class StackMainNavigation extends Component {
+  render() {
+    return (
+      <Router
+        uriPrefix={IS_IOS ? `${APP_URI}://` : `${APP_URI}://${APP_URI}/`}
+      />
+    );
+  }
+}

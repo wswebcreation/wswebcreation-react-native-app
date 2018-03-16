@@ -66,6 +66,47 @@ This will give a build like below. On the left iPhone you see the normal build, 
 
 ![wswebcreation.ios.disable.animation](./assets/wswebcreation-disable-animation.gif)
 
+## Storybook
+This project also has storybook implemented, for more info about storybook please check [here](https://github.com/storybooks/storybook/tree/master/app/react-native).
+
+The basic idea behind storybook is that you can develop individual React Native components without running your app. But it can also be used to individually (automatically) test React Native components in the app. See also [Deep Linking](./README.md#deep-linking) for more info.
+
+To manually start storybook in this app execute the following steps:
+
+1. Run `npm run storybook`
+2. Build the app with for example `npm run ios` or `npm run android`.
+
+You can then walk through the components like below.
+
+![wswebcreation.ios.storybook](./assets/wswebcreation-storybook.gif)
+
+## Deep Linking
+Deeplinking has been implemented in this app through `react-navigation`, see [here](https://reactnavigation.org/docs/deep-linking.html) for more info.
+With deeplinking we can now easily directly go to specific screens or screens that are only available in a specific build. 
+
+### Example: storybook
+For testing specific components in the app I've implemented storybook, see [here](./README.md#storybook). Storybook is only available on a `dev` or `automation`-build, see [Different environment builds](./README.md#different-environment-builds). Run your build and then run it with one of the following commands
+
+```bash
+# For iOS use
+xcrun simctl openurl booted wswebcreationapp://storybook
+
+# For Android use
+adb shell am start -W -a android.intent.action.VIEW -d "wswebcreationapp://wswebcreationapp/storybook" com.wswebcreation
+```
+
+You are now able to access storybook as shown below.
+
+![wswebcreation.ios.deeplinking](./assets/wswebcreation-deeplinking.gif)
+
+### Example: Chatbox shortcut
+In production it could also be that you receive a link to open for example a chat directly. In the gif below you will see how that works in my demo app. Here we start the app with a deeplink to open the chatbox of one of our friends with `xcrun simctl openurl booted wswebcreationapp://chatbox/name`
+
+
+> **I've mocked the data retrieved in the [`ChatBox.js`](./app/screens/ChatBox.js) for demo purpose. You can add whatever name you want, you will always retrieve Dick Tracy ;-), but I hope you understand how it works and how it can benefit you during testing.**
+
+![wswebcreation.ios.deeplinking.chatbox](./assets/wswebcreation-deeplinking-chatbox.gif)
+
 ## Testing
 
 ### Appium
@@ -106,7 +147,8 @@ See **TODO**
 - [ ] Add Detox tests for webview screen Android
 - [ ] Add Detox tests for chat screen Android
 - [x] Implement different environments / build types
-- [ ] Add deeplink
+- [x] Add storybook
+- [x] Add deeplink
 - [x] Disable animations for automation
 - [ ] Add mocking for the API's
 - [ ] Add UT's with Jest and Enzyme

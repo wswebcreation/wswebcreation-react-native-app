@@ -16,11 +16,30 @@ import { testProperties } from '../config/TestProperties';
 let conversation;
 const ds = new ListView.DataSource({ rowHasChanged: (r1, r2) => r1 != r2 });
 const defaultHeight = 30;
+const deepLinkUser = {
+  'firstName': 'Dick',
+  'lastName': 'Tracy',
+  'conversation': [
+    {
+      'placeRight': true,
+      'message': 'So it seems like this internet thing is here to stay, huh?'
+    },
+    {
+      'placeRight': false,
+      'message': 'Hey wassup?'
+    }
+  ],
+  'read': true,
+  'lastMessage': 'So it seems like this internet thing is here to stay, huh?',
+  'date': '09-Dec-2017',
+  'time': '1:33 PM',
+  'image': 'https://randomuser.me/api/portraits/men/3.jpg'
+};
 
 class ChatBox extends React.Component {
   constructor(props) {
     super(props);
-    conversation = this.props.navigation.state.params.person.conversation || [];
+    conversation = this.props.navigation.state.params.person.conversation || deepLinkUser.conversation;
     this.state = {
       message: '',
       placeRight: true,
@@ -29,8 +48,8 @@ class ChatBox extends React.Component {
     };
   }
 
-  static navigationOptions ({ navigation }) {
-    const person = navigation.state.params.person;
+  static navigationOptions({ navigation }) {
+    const person = typeof navigation.state.params.person === 'string' ? deepLinkUser : navigation.state.params.person;
     const headerLeft = (
       <CustomHeader
         onPress={() => navigation.goBack(null)}

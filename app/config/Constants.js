@@ -27,3 +27,4 @@ export const ENV_STRINGS = {
 export const ENVIRONMENT = Config.ENVIRONMENT;
 export const IS_AUTOMATION_BUILD = ENVIRONMENT === ENV_STRINGS.AUTOMATION;
 export const TESTING_ENVIRONMENTS = [ENV_STRINGS.DEV, ENV_STRINGS.AUTOMATION];
+export const APP_URI = 'wswebcreationapp';
