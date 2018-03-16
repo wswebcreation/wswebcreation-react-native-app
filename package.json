@@ -81,7 +81,8 @@
   "license": "MIT",
   "detox": {
     "test-runner": "jest",
-    "runner-config": "e2e/config.json",
+    "runner-config": "./__tests__/detox/config/detox.json",
+    "specs": ".",
     "configurations": {
       "ios.sim.debug": {
         "binaryPath": "ios/build/Build/Products/Debug-iphonesimulator/wswebcreation.app",

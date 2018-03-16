@@ -125,7 +125,12 @@ You can fix this by checking the [docs](https://appium.io/docs/en/writing-runnin
 > **Change the number of ChromeDriver tot the latest version to see an overview of all versions**
 
 ### Detox
-See **TODO**
+#### Installing Detox
+Walk through step 1 listed [here](https://github.com/wix/detox/blob/master/docs/Introduction.GettingStarted.md)
+
+The rest of the dependencies will be downloaded when you do a `npm install` for this repo
+
+
 
 ## TODO
 - [x] Create an iOS app

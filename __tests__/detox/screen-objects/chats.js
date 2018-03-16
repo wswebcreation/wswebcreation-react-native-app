@@ -1,4 +1,4 @@
-import * as labels from '../../app/config/labels';
+import * as labels from '../../../app/config/labels';
 import { TEST_PREFIX } from '../support/constants';
 
 export const CHAT_SELECTORS = {
