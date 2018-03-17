@@ -124,12 +124,33 @@ You can fix this by checking the [docs](https://appium.io/docs/en/writing-runnin
  
 > **Change the number of ChromeDriver tot the latest version to see an overview of all versions**
 
+#### Appium Config
+In this setup I use:
+
+- [webdriver.io](http://webdriver.io/) => the testframework
+- [CucumberJS](https://github.com/cucumber/cucumber-js) => the language in / way I write tests
+- [multiple-cucumber-html-reporter](https://github.com/wswebcreation/multiple-cucumber-html-reporter) => some nice cucumber reporting
+- [Appium Desktop](https://github.com/appium/appium-desktop) => for debugging the app / finding the elements if needed
+
+The config can be found in [__tests__/appium/config](./__tests__/appium/config).
+
+The tests can be found in [__tests__/appium/features](./__tests__/appium/features).
+
+
 ### Detox
 #### Installing Detox
 Walk through step 1 listed [here](https://github.com/wix/detox/blob/master/docs/Introduction.GettingStarted.md)
 
-The rest of the dependencies will be downloaded when you do a `npm install` for this repo
+The rest of the dependencies will be downloaded when you do a `npm install` for this repo.
 
+#### Detox config and tests
+- The detox config can be found in [__tests__/detox/config/](./__tests__/detox/config)-folder
+- The detox tests can be found in [__tests__/detox/features/](./__tests__/detox/features)-folder
+
+#### Running tests
+- Before running the detox tests please run `npm run detox.build`. This will build an app that can be used for testing
+- To run the tests on iOS run `npm run detox.ios`
+- Android tests are in the [TODO](./README.md#todo) list.
 
 
 ## TODO

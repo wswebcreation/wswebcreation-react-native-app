@@ -7,7 +7,7 @@
     "android.automation": "ENVFILE=.env.automation react-native run-android",
     "appium.android": "node_modules/.bin/wdio __tests__/appium/config/wdio.android.conf.js",
     "appium.ios": "node_modules/.bin/wdio __tests__/appium/config/wdio.ios.conf.js",
-    "build.detox": "detox build",
+    "detox.build": "detox build",
     "detox.ios": "detox test -c ios.sim.debug",
     "ios": "react-native run-ios",
     "ios.automation": "ENVFILE=.env.automation react-native run-ios",
