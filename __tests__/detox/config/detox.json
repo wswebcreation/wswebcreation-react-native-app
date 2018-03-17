@@ -1,0 +1,5 @@
+{
+  "rootDir": "../../../",
+  "setupTestFrameworkScriptFile": "./__tests__/detox/config/setup.js",
+  "testMatch": ["**/detox/**/*.spec.js"]
+}

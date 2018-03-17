@@ -124,8 +124,34 @@ You can fix this by checking the [docs](https://appium.io/docs/en/writing-runnin
  
 > **Change the number of ChromeDriver tot the latest version to see an overview of all versions**
 
+#### Appium Config
+In this setup I use:
+
+- [webdriver.io](http://webdriver.io/) => the testframework
+- [CucumberJS](https://github.com/cucumber/cucumber-js) => the language in / way I write tests
+- [multiple-cucumber-html-reporter](https://github.com/wswebcreation/multiple-cucumber-html-reporter) => some nice cucumber reporting
+- [Appium Desktop](https://github.com/appium/appium-desktop) => for debugging the app / finding the elements if needed
+
+The config can be found in [__tests__/appium/config](./__tests__/appium/config).
+
+The tests can be found in [__tests__/appium/features](./__tests__/appium/features).
+
+
 ### Detox
-See **TODO**
+#### Installing Detox
+Walk through step 1 listed [here](https://github.com/wix/detox/blob/master/docs/Introduction.GettingStarted.md)
+
+The rest of the dependencies will be downloaded when you do a `npm install` for this repo.
+
+#### Detox config and tests
+- The detox config can be found in [__tests__/detox/config/](./__tests__/detox/config)-folder
+- The detox tests can be found in [__tests__/detox/features/](./__tests__/detox/features)-folder
+
+#### Running tests
+- Before running the detox tests please run `npm run detox.build`. This will build an app that can be used for testing
+- To run the tests on iOS run `npm run detox.ios`
+- Android tests are in the [TODO](./README.md#todo) list.
+
 
 ## TODO
 - [x] Create an iOS app
@@ -138,10 +164,14 @@ See **TODO**
 - [x] Add Appium tests for navigation
 - [x] Add Appium tests for webview screen
 - [x] Add Appium tests for chat screen 
-- [ ] Add Detox setup
-- [ ] Add Detox tests for navigation
-- [ ] Add Detox tests for webview screen
-- [ ] Add Detox tests for chat screen
+- [x] Add Detox setup iOS
+- [x] Add Detox tests for navigation iOS
+- [x] Add Detox tests for webview screen iOS
+- [x] Add Detox tests for chat screen iOS
+- [ ] Add Detox setup Android
+- [ ] Add Detox tests for navigation Android
+- [ ] Add Detox tests for webview screen Android
+- [ ] Add Detox tests for chat screen Android
 - [x] Implement different environments / build types
 - [x] Add storybook
 - [x] Add deeplink
@@ -151,7 +181,7 @@ See **TODO**
 
 ## Issues
 - [ ] Check issue in Tabnavigator with `tabBarTestIDProps`, it's not working for Android, got a workaround for it
-- [ ] Check how to "slow down" swiping on Android, looks like it is taking 2 screens at the same time
+- [x] ~Check how to "slow down" swiping on Android, looks like it is taking 2 screens at the same time~ => *Fixed: It were the `x.start` and `x.end` coordinates that were to big which caused to scroll 2 screens. Can be checked by hand.*
 - [ ] Fix issue Android stackmenu and chatbox scroll to much up
 
 ## Contributing
