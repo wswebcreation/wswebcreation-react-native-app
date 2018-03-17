@@ -8,12 +8,12 @@ export const SWIPE_DIRECTION = {
     end: { x: 50, y: 85 },
   },
   left: {
-    start: { x: 95, y: 50 },
-    end: { x: 15, y: 50 },
+    start: { x: 85, y: 30 },
+    end: { x: 25, y: 30 },
   },
   right: {
-    start: { x: 5, y: 50 },
-    end: { x: 95, y: 50 },
+    start: { x: 25, y: 30 },
+    end: { x: 85, y: 30 },
   },
   up: {
     start: { x: 50, y: 85 },

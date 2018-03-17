@@ -160,7 +160,7 @@ The rest of the dependencies will be downloaded when you do a `npm install` for 
 
 ## Issues
 - [ ] Check issue in Tabnavigator with `tabBarTestIDProps`, it's not working for Android, got a workaround for it
-- [ ] Check how to "slow down" swiping on Android, looks like it is taking 2 screens at the same time
+- [x] ~Check how to "slow down" swiping on Android, looks like it is taking 2 screens at the same time~ => *Fixed: It were the `x.start` and `x.end` coordinates that were to big which caused to scroll 2 screens. Can be checked by hand.*
 - [ ] Fix issue Android stackmenu and chatbox scroll to much up
 
 ## Contributing
