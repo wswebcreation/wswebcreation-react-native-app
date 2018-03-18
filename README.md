@@ -66,6 +66,10 @@ This will give a build like below. On the left iPhone you see the normal build, 
 
 ![wswebcreation.ios.disable.animation](./assets/wswebcreation-disable-animation.gif)
 
+Or with a animated component that I've created for this topic see below
+
+![wswebcreation.ios.animation](./assets/wswebcreation-animation.gif)
+
 ## Storybook
 This project also has storybook implemented, for more info about storybook please check [here](https://github.com/storybooks/storybook/tree/master/app/react-native).
 
