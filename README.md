@@ -66,7 +66,7 @@ This will give a build like below. On the left iPhone you see the normal build, 
 
 ![wswebcreation.ios.disable.animation](./assets/wswebcreation-disable-animation.gif)
 
-Or with a animated component that I've created for this topic see below
+Or with an animated component that I've created for this topic see below
 
 ![wswebcreation.ios.animation](./assets/wswebcreation-animation.gif)
 
