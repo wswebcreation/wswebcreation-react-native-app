@@ -3,6 +3,7 @@ import { StyleSheet, View, WebView } from 'react-native';
 import { BorderText } from '../components/BorderText';
 import { CustomHeader } from '../components/CustomHeader';
 import * as labels from '../config/labels.json';
+import { testProperties } from '../config/TestProperties';
 
 export default class WebViewScreen extends Component {
   static navigationOptions({ navigation }) {
@@ -17,7 +18,10 @@ export default class WebViewScreen extends Component {
 
   renderLoading() {
     return (
-      <View style={styles.loaderContainer}>
+      <View
+        style={styles.loaderContainer}
+        {...testProperties(labels.webview.loadingText)}
+      >
         <BorderText
           text={labels.webview.loadingText}
         />
