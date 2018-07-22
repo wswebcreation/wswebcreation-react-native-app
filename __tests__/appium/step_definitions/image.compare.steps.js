@@ -88,16 +88,3 @@ Then(
     )).to.equal(0);
   },
 );
-
-device.compareScreen(
-  'compare-home-screen-element-blockouts',
-  {
-    elementBlockOuts: [
-      { element: $(logo) },
-      {
-        element: $(`${TEST_PREFIX}${labels.tabNavigator.webview}`),
-        margin: 10,
-      },
-    ],
-  },
-);
