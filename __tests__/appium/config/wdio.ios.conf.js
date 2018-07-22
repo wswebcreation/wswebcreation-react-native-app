@@ -1,8 +1,9 @@
 const config = require('./wdio.shared.conf').config;
+
 const IOS_APP_PATH = './ios/build/Build/Products/Debug-iphonesimulator/wswebcreation.app';
 const deviceName = 'iPhone 8';
 const platformName = 'iOS';
-const platformVersion = '11.2';
+const platformVersion = '11.4';
 
 // ============
 // Capabilities

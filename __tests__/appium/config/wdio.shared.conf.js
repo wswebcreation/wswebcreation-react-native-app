@@ -33,6 +33,7 @@ exports.config = {
       '__tests__/appium/step_definitions/base.steps.js',
       '__tests__/appium/step_definitions/navigation.steps.js',
       '__tests__/appium/step_definitions/webview.steps.js',
+      '__tests__/appium/step_definitions/image.compare.steps.js',
       '__tests__/appium/step_definitions/chat.steps.js',
     ],
     backtrace: false,
@@ -55,8 +56,8 @@ exports.config = {
   // of methods to it. If one of them returns with a promise, WebdriverIO will wait until that
   // promise got resolved to continue.
   /**
-   * Gets executed once before all workers get launched.
-   */
+     * Gets executed once before all workers get launched.
+     */
   onPrepare: () => {
     console.log(`
 =================================================================================
@@ -91,6 +92,14 @@ exports.config = {
      * Custom property that is used to determine if the app needs to be restarted
      */
     device.options.restartApp = false;
+  },
+  plugins: {
+    'wdio-native-app-compare': {
+      baselineFolder: '__tests__/appium/image-compare/baseline',
+      screenshotPath: '.tmp/image-compare',
+      autoSaveBaseline: true,
+      debug: true,
+    },
   },
   /**
    * Gets executed after all workers got shut down and the process is about to exit.

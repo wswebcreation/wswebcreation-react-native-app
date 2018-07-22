@@ -1,11 +1,11 @@
 import React, { Component } from 'react';
-import { Dimensions, ScrollView, StyleSheet, Text, View, } from 'react-native';
-import Hyperlink from 'react-native-hyperlink'
+import { Dimensions, ScrollView, StyleSheet, Text, View } from 'react-native';
+import Hyperlink from 'react-native-hyperlink';
 import { BorderText } from '../components/BorderText';
-
-const { height } = Dimensions.get('window');
 import * as labels from '../config/labels.json';
 import { testProperties } from '../config/TestProperties';
+
+const { height } = Dimensions.get('window');
 
 export default class Home extends Component {
   static navigationOptions = {
@@ -38,7 +38,7 @@ export default class Home extends Component {
           In the Webview you can enter an URL and load it in the Webview
         </Text>
         <Text style={[styles.header, styles.headerMargin]}>CHATS</Text>
-        <Hyperlink linkDefault={true} linkStyle={styles.linkStyle}>
+        <Hyperlink linkDefault linkStyle={styles.linkStyle}>
           <Text style={styles.defaultFont}>
             In the chats I created multiple API calls to retrieve JSON data from
             https://gist.github.com/wswebcreation.{'\n'}
@@ -102,5 +102,5 @@ const styles = StyleSheet.create({
   },
   linkStyle: {
     color: '#2980b9',
-  }
+  },
 });

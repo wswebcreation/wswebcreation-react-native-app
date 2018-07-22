@@ -14,7 +14,11 @@
     "import/resolver": "react-native"
   },
   "globals": {
-    "fetch": false
+    "fetch": false,
+    "$": true,
+    "$$": true,
+    "browser": true,
+    "device": true
   },
   "rules": {
     "no-use-before-define": [0],
