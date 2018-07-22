@@ -1,9 +1,9 @@
 import React, { PureComponent } from 'react';
 import { Text, StyleSheet, Platform } from 'react-native';
 import PropTypes from 'prop-types';
+import { testProperties } from '../config/TestProperties';
 
 class BorderText extends PureComponent {
-
   static propTypes = {
     text: PropTypes.string.isRequired,
   };
@@ -13,6 +13,7 @@ class BorderText extends PureComponent {
     return (
       <Text
         style={[styles.headerBorder, styles.header]}
+        {...testProperties(text)}
       >
         {text.toUpperCase()}
       </Text>
@@ -36,7 +37,7 @@ const styles = StyleSheet.create({
     paddingLeft: 13,
     paddingRight: 13,
     paddingTop: 9,
-    textAlign: 'center'
+    textAlign: 'center',
   },
   header: {
     color: '#000',
