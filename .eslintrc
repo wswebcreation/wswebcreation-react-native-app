@@ -14,7 +14,8 @@
     "import/resolver": "react-native"
   },
   "globals": {
-    "fetch": false
+    "fetch": false,
+    "device": true
   },
   "rules": {
     "no-use-before-define": [0],
@@ -25,7 +26,7 @@
     "react-native/no-inline-styles": [0],
     "react-native/split-platform-components": [0],
     "react/jsx-no-bind": [0],
-    "no-underscore-dangle": [0]
-
+    "no-underscore-dangle": [0],
+    "max-len": [2, 140]
   }
 }

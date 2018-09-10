@@ -1,5 +1,3 @@
-import { ensureDirSync } from 'fs-extra';
-import { resolve } from 'path';
 import {
   ANDROID_ACCEPT_ALERT_SELECTOR,
   ANDROID_ALERT_MESSAGE_SELECTOR,
@@ -7,8 +5,10 @@ import {
   ANDROID_TEXT_SELECTOR,
   IOS_ALERT_SELECTOR,
   IOS_TEXT_SELECTOR,
-  SWIPE_DIRECTION
+  SWIPE_DIRECTION,
 } from './constants';
+
+let SCREEN_SIZE;
 
 /**
  * The app is opened by Appium by default, when we start a new scenario
@@ -27,6 +27,7 @@ export function launchApp() {
 export function restartApp() {
   device.reset();
 }
+
 
 /**
  * Wait for a given element to be|not visible|exist
@@ -84,52 +85,88 @@ export function upperFirst(string) {
  *   const to = { x: 25, y:50 }
  * </pre>
  */
-export function swipe(from, to) {
-  const screenSize = device.windowHandleSize().value;
-  const pressOptions = getDeviceScreenCoordinates(screenSize, from);
-  const moveToScreenCoordinates = getDeviceScreenCoordinates(screenSize, to);
+export function swipeOnPercentage(from, to) {
+  SCREEN_SIZE = SCREEN_SIZE || device.windowHandleSize().value;
+  const pressOptions = getDeviceScreenCoordinates(SCREEN_SIZE, from);
+  const moveToScreenCoordinates = getDeviceScreenCoordinates(SCREEN_SIZE, to);
+  swipe(
+    pressOptions,
+    moveToScreenCoordinates,
+  );
+}
 
+/**
+ * Swipe from coordinates (from) to the new coordinates (to). The given coordinates are in pixels.
+ *
+ * @param {object} from { x: 50, y: 50 }
+ * @param {object} to { x: 25, y: 25 }
+ *
+ * @example
+ * <pre>
+ *   // This is a swipe to the left
+ *   const from = { x: 50, y:50 }
+ *   const to = { x: 25, y:50 }
+ * </pre>
+ */
+export function swipe(from, to) {
   device.touchPerform([{
     action: 'press',
-    options: pressOptions,
+    options: from,
+  }, {
+    action: 'wait',
+    options: { ms: 1000 },
   }, {
     action: 'moveTo',
-    options: {
-      x: moveToScreenCoordinates.x - pressOptions.x,
-      y: moveToScreenCoordinates.y - pressOptions.y
-    },
+    options: to,
   }, {
     action: 'release',
   }]);
-  device.pause(1000);
+  device.pause(1500);
 }
 
 /**
- * Swipe down
+ * Swipe down based on a percentage
+ * @param {float} percentage
  */
-export function swipeDown() {
-  swipe(SWIPE_DIRECTION.down.start, SWIPE_DIRECTION.down.end);
+export function swipeDown(percentage = 1) {
+  swipeOnPercentage(calculateXY(SWIPE_DIRECTION.down.start, percentage), calculateXY(SWIPE_DIRECTION.down.end, percentage));
 }
 
 /**
- * Swipe Up
+ * Swipe Up based on a percentage
+ * @param {float} percentage from 0 - 1
  */
-export function swipeUp() {
-  swipe(SWIPE_DIRECTION.up.start, SWIPE_DIRECTION.up.end);
+export function swipeUp(percentage = 1) {
+  swipeOnPercentage(calculateXY(SWIPE_DIRECTION.up.start, percentage), calculateXY(SWIPE_DIRECTION.up.end, percentage));
 }
 
 /**
- * Swipe left
+ * Swipe left based on a percentage
+ * @param {float} percentage from 0 - 1
  */
-export function swipeLeft() {
-  swipe(SWIPE_DIRECTION.left.start, SWIPE_DIRECTION.left.end);
+export function swipeLeft(percentage = 1) {
+  swipeOnPercentage(calculateXY(SWIPE_DIRECTION.left.start, percentage), calculateXY(SWIPE_DIRECTION.left.end, percentage));
 }
 
 /**
- * Swipe right
+ * Swipe right based on a percentage
+ * @param {float} percentage from 0 - 1
  */
-export function swipeRight() {
-  swipe(SWIPE_DIRECTION.right.start, SWIPE_DIRECTION.right.end);
+export function swipeRight(percentage = 1) {
+  swipeOnPercentage(calculateXY(SWIPE_DIRECTION.right.start, percentage), calculateXY(SWIPE_DIRECTION.right.end, percentage));
+}
+
+/**
+ * Calculate the x y coordinates based on a percentage
+ * @param {object} coordinates
+ * @param {float} percentage
+ * @return {{x: number, y: number}}
+ */
+function calculateXY({x, y}, percentage) {
+  return {
+    x: x * percentage,
+    y: y * percentage,
+  };
 }
 
 /**
@@ -150,7 +187,7 @@ function getDeviceScreenCoordinates(screenSize, coordinates) {
  * percentages of the screen.
  * @param {object} location { x: 50, y: 25 }
  */
-export function tapOnScreen(location = { x: 50, y: 25 }) {
+export function tapOnScreen(location = {x: 50, y: 25}) {
   const screenSize = device.windowHandleSize().value;
 
   device.touchPerform([{
@@ -183,7 +220,7 @@ export function acceptAlert() {
  * @return {string}
  */
 export function getAlertText() {
-  const alertText =  device.isAndroid
+  const alertText = device.isAndroid
     ? `${$(ANDROID_ALERT_TITLE_SELECTOR).getText()} ${$(ANDROID_ALERT_MESSAGE_SELECTOR).getText()}`
     : device.alertText();
   return alertText.replace('\n', ' ');
