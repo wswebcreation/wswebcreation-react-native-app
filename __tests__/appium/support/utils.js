@@ -162,7 +162,7 @@ export function swipeRight(percentage = 1) {
  * @param {float} percentage
  * @return {{x: number, y: number}}
  */
-function calculateXY({x, y}, percentage) {
+function calculateXY({ x, y }, percentage) {
   return {
     x: x * percentage,
     y: y * percentage,
@@ -187,7 +187,7 @@ function getDeviceScreenCoordinates(screenSize, coordinates) {
  * percentages of the screen.
  * @param {object} location { x: 50, y: 25 }
  */
-export function tapOnScreen(location = {x: 50, y: 25}) {
+export function tapOnScreen(location = { x: 50, y: 25 }) {
   const screenSize = device.windowHandleSize().value;
 
   device.touchPerform([{

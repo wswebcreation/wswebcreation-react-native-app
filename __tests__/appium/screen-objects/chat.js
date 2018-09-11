@@ -1,5 +1,5 @@
-import * as labels from '../../../app/config/labels';
-import { TEST_PREFIX, SCREEN_SELECTORS, WAIT_FOR_STATE } from '../support/constants';
+import * as labels from '../../../app/config/labels.json';
+import { TEST_PREFIX, WAIT_FOR_STATE } from '../support/constants';
 import { getTextOfElement, tapOnButton, waitFor } from '../support/utils';
 
 const CHAT_SELECTORS = {
@@ -64,7 +64,7 @@ export function verifyChatsShownInView(table, showTextLogging = false) {
  Found random response was:
  
  '${shownChats[foundChatIndex]}'
-=======================================================================`)
+=======================================================================`);
     } else {
       expect(shownChats[foundChatIndex])
         .to

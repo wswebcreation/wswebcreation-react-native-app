@@ -1,4 +1,4 @@
-import * as labels from '../../../app/config/labels';
+import * as labels from '../../../app/config/labels.json';
 import { TEST_PREFIX } from '../support/constants';
 import { tapOnButton } from '../support/utils';
 
@@ -15,12 +15,12 @@ const HEADER_BACK_BUTTON = `${TEST_PREFIX}${labels.stackNavigatorTitle.goBackAcc
  * possible values
  */
 export function selectScreenFromTabBar(screen) {
-  tapOnButton(TABBAR_SELECTORS[screen.toLowerCase()])
+  tapOnButton(TABBAR_SELECTORS[screen.toLowerCase()]);
 }
 
 /**
  * Click on the back button in the header
  */
-export function goBackFromHeader(){
+export function goBackFromHeader() {
   tapOnButton(HEADER_BACK_BUTTON);
 }

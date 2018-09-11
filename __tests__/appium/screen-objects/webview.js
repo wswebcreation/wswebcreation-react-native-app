@@ -1,9 +1,9 @@
-import * as labels from '../../../app/config/labels';
+import * as labels from '../../../app/config/labels.json';
 import {
   TEST_PREFIX,
   WAIT_FOR_STATE,
   CONTEXT_REF,
-  DOCUMENT_READY_STATE
+  DOCUMENT_READY_STATE,
 } from '../support/constants';
 import {
   acceptAlert,
@@ -11,7 +11,7 @@ import {
   swipe,
   tapOnButton,
   waitFor,
-  waitForAlert
+  waitForAlert,
 } from '../support/utils';
 
 const WEBVIEW_SELECTORS = {
@@ -28,8 +28,8 @@ const WEBVIEW_SELECTORS = {
       TESTAUTOMATION_MENU_ITEM: 'a*=testautomation',
 
     },
-    TESTAUTOMATION_CATEGORY_TITLE: 'h4*=testautomation'
-  }
+    TESTAUTOMATION_CATEGORY_TITLE: 'h4*=testautomation',
+  },
 };
 
 /**
@@ -43,7 +43,7 @@ export function enterURL(url) {
     falseState: true,
     selector: WEBVIEW_SELECTORS.LOADER,
     state: WAIT_FOR_STATE.EXIST,
-  })
+  });
 }
 
 /**
@@ -63,7 +63,7 @@ export function waitForWebsiteLoaded() {
 export function switchToContext(context) {
   let index = context === CONTEXT_REF.WEBVIEW ? 1 : 0;
   if (context === CONTEXT_REF.WEBVIEW && getCurrentContexts().length > 2 && device.isIOS) {
-    index = getCurrentContexts().findIndex(context => context.includes('.2'));
+    index = getCurrentContexts().findIndex(currentContext => currentContext.includes('.2'));
   }
   device.context(getCurrentContexts()[index]);
 }
@@ -127,7 +127,6 @@ export function openTestautomationCategory() {
     state: WAIT_FOR_STATE.VISIBLE,
   });
   $(WEBVIEW_SELECTORS.CSS.MENU.TESTAUTOMATION_MENU_ITEM).click();
-
 }
 
 /**
@@ -152,7 +151,7 @@ export function waitForWebviewContextLoaded() {
       && getCurrentContexts()[1].toLowerCase().includes(CONTEXT_REF.WEBVIEW),
     10000,
     'Webview context not loaded',
-    100
+    100,
   );
 }
 
@@ -165,7 +164,7 @@ export function waitForDocumentFullyLoaded() {
     () => device.execute(() => document.readyState).value === DOCUMENT_READY_STATE.COMPLETE,
     15000,
     'Website not loaded',
-    100
+    100,
   );
 }
 

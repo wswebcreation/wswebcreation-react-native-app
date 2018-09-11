@@ -7,7 +7,7 @@ import {
   validateAlertIsShown,
   validateCanNativelyScrollWebview,
   validateCanScrollWebviewWithJavascript,
-  waitForWebsiteLoaded
+  waitForWebsiteLoaded,
 } from '../screen-objects/webview';
 import { INCORRECT_URL } from '../support/constants';
 
@@ -43,33 +43,33 @@ Then(
   /the site is loaded/,
   () => {
     waitForWebsiteLoaded();
-  }
+  },
 );
 
 Then(
   /I can scroll through the site without switching the context/,
   () => {
     validateCanNativelyScrollWebview();
-  }
+  },
 );
 
 Then(
   /I can scroll through the site with Javascript/,
   () => {
     validateCanScrollWebviewWithJavascript();
-  }
+  },
 );
 
 Then(
   /the category testautomation is shown/,
   () => {
     categoryTestautomationIsShown();
-  }
+  },
 );
 
 Then(
   /an error message is shown/,
   () => {
     validateAlertIsShown(INCORRECT_URL);
-  }
+  },
 );

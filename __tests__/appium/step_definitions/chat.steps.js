@@ -3,7 +3,7 @@ import {
   chatBoxIsVisible,
   selectChat,
   submitChat,
-  verifyChatsShownInView
+  verifyChatsShownInView,
 } from '../screen-objects/chat';
 
 When(
@@ -22,9 +22,9 @@ When(
 
 Then(
   /the Chatbox should be visible/,
-  () =>{
+  () => {
     chatBoxIsVisible();
-  }
+  },
 );
 
 Then(

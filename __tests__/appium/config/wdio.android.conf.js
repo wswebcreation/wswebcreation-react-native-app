@@ -1,8 +1,9 @@
 const config = require('./wdio.shared.conf').config;
+
 const ANDROID_APP_PATH = './android/app/build/outputs/apk/app-debug.apk';
-const deviceName= 'Nexus_5_7.1.1';
+const deviceName = 'Nexus_5_7.1.1';
 const platformName = 'Android';
-const platformVersion =  '7.1.1';
+const platformVersion = '7.1.1';
 
 // ============
 // Capabilities

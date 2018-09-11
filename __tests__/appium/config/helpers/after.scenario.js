@@ -1,4 +1,4 @@
-import { After,  Status} from 'cucumber';
+import { After, Status } from 'cucumber';
 import { ensureDirSync } from 'fs-extra';
 import { resolve } from 'path';
 import { switchToContext } from '../../screen-objects/webview';

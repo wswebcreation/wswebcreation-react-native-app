@@ -1,4 +1,4 @@
-import * as labels from '../../../app/config/labels';
+import * as labels from '../../../app/config/labels.json';
 import { TEST_PREFIX, WAIT_FOR_STATE } from '../support/constants';
 import { waitFor } from '../support/utils';
 
