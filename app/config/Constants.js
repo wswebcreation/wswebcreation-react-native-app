@@ -29,21 +29,21 @@ export const IS_AUTOMATION_BUILD = ENVIRONMENT === ENV_STRINGS.AUTOMATION;
 export const TESTING_ENVIRONMENTS = [ENV_STRINGS.DEV, ENV_STRINGS.AUTOMATION];
 export const APP_URI = 'wswebcreationapp';
 export const DEEPLINK_MOCKED_USER = {
-  'firstName': 'Dick',
-  'lastName': 'Tracy',
-  'conversation': [
+  firstName: 'Dick',
+  lastName: 'Tracy',
+  conversation: [
     {
-      'placeRight': true,
-      'message': 'So it seems like this internet thing is here to stay, huh?'
+      placeRight: true,
+      message: 'So it seems like this internet thing is here to stay, huh?'
     },
     {
-      'placeRight': false,
-      'message': 'Hey wassup?'
-    }
+      placeRight: false,
+      message: 'Hey wassup?',
+    },
   ],
-  'read': true,
-  'lastMessage': 'So it seems like this internet thing is here to stay, huh?',
-  'date': '09-Dec-2017',
-  'time': '1:33 PM',
-  'image': 'https://randomuser.me/api/portraits/men/3.jpg'
+  read: true,
+  lastMessage: 'So it seems like this internet thing is here to stay, huh?',
+  date: '09-Dec-2017',
+  time: '1:33 PM',
+  image: 'https://randomuser.me/api/portraits/men/3.jpg'
 };

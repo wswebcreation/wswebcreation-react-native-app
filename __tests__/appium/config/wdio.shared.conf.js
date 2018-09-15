@@ -14,7 +14,7 @@ exports.config = {
   // Test Configuration
   // ==================
   sync: true,
-  logLevel: 'silent',
+  logLevel: argv.logLevel || 'silent',
   coloredLogs: true,
   bail: 0,
   baseUrl: 'http://localhost',

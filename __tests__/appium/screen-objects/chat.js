@@ -37,6 +37,7 @@ export function chatBoxIsVisible() {
  */
 export function verifyChatsShownInView(table, showTextLogging = false) {
   const expectedChats = table.hashes();
+  device.pause(expectedChats.length * 100);
   const shownChats = getChatsShownInView();
   if (showTextLogging) {
     console.log('shownChats = ', shownChats);

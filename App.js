@@ -1,15 +1,17 @@
 import React, { Component } from 'react';
 import {
   StyleSheet,
-  View
+  View,
 } from 'react-native';
 import { StackMainNavigation } from './app/config/router';
+import AutomationRestartLink from './app/config/AutomationRestart';
 
 export default class WsWebcreationApp extends Component<{}> {
   render() {
     return (
       <View style={styles.container}>
-        <StackMainNavigation/>
+        <StackMainNavigation />
+        <AutomationRestartLink />
       </View>
     );
   }

@@ -10,15 +10,15 @@ describe('Use the webview', () => {
     await expect(screens(SCREENS.WEBVIEW)).toBeVisible();
   });
 
-  xit('should be able to swipe through the webview without switching context', async () => {
+  it('should be able to swipe through the webview without switching context', async () => {
     console.warn('NOT SUPPORTED TO SWIPE THE WEBVIEW OR SWIPE BY COORDINATES');
   });
 
-  xit('should be able to scroll through the webview with a Javascript scroll', async () => {
+  it('should be able to scroll through the webview with a Javascript scroll', async () => {
     console.warn('NOT SUPPORTED TO MANIPULATE THE WEBVIEW');
   });
 
-  xit('Should be able to see all posts in the testautomation category', async () => {
+  it('Should be able to see all posts in the testautomation category', async () => {
     console.warn('NOT SUPPORTED TO VIEW ELEMENTS IN THE WEBVIEW');
   });
 

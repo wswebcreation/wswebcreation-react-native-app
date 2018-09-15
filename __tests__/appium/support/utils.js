@@ -1,3 +1,4 @@
+import { argv } from 'yargs'; // eslint-disable-line
 import {
   ANDROID_ACCEPT_ALERT_SELECTOR,
   ANDROID_ALERT_MESSAGE_SELECTOR,
@@ -5,8 +6,11 @@ import {
   ANDROID_TEXT_SELECTOR,
   IOS_ALERT_SELECTOR,
   IOS_TEXT_SELECTOR,
-  SWIPE_DIRECTION,
+  SWIPE_DIRECTION, TEST_PREFIX,
 } from './constants';
+import labels from '../../../app/config/labels.json';
+import { waitForScreenToBeVisible } from '../screen-objects/base';
+
 
 let SCREEN_SIZE;
 
@@ -18,14 +22,25 @@ export function launchApp() {
   if (!device.options.firstAppStart) {
     restartApp();
   }
-  device.options.firstAppStart = false;
 }
 
 /**
- * Restart the app, restarting is done with a reset of the app status to start with a clean phase
+ * Restart the app, restarting is done with triggering react native restart
  */
 export function restartApp() {
-  device.reset();
+  const selector = TEST_PREFIX + labels.restartDot;
+  try {
+    device.pause(500);
+
+    if (!argv.restartDot || (argv.restartDot && !device.isVisible(selector))) {
+      throw new Error();
+    }
+
+    device.click(selector);
+    waitForScreenToBeVisible('Home');
+  } catch (e) {
+    device.reset();
+  }
 }
 
 
@@ -70,7 +85,8 @@ export function tapOnButton(element) {
  * @returns Returns the converted string
  */
 export function upperFirst(string) {
-  return string.charAt(0).toUpperCase() + string.slice(1);
+  return string.charAt(0)
+    .toUpperCase() + string.slice(1);
 }
 
 /**
@@ -221,7 +237,9 @@ export function acceptAlert() {
  */
 export function getAlertText() {
   const alertText = device.isAndroid
-    ? `${$(ANDROID_ALERT_TITLE_SELECTOR).getText()} ${$(ANDROID_ALERT_MESSAGE_SELECTOR).getText()}`
+    ? `${$(ANDROID_ALERT_TITLE_SELECTOR)
+      .getText()} ${$(ANDROID_ALERT_MESSAGE_SELECTOR)
+      .getText()}`
     : device.alertText();
   return alertText.replace('\n', ' ');
 }

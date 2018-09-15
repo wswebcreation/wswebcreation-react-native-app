@@ -6,6 +6,8 @@ import { CONTEXT_REF, SCREENSHOTS_FOLDERS } from '../../support/constants';
 
 After(function (scenarioResult) {
   const world = this;
+  // Always set it to false
+  device.options.firstAppStart = false;
   return (scenarioResult.status === Status.FAILED)
     ? saveFailedScenarioScreenshot(world, scenarioResult)
     : scenarioResult.status;
