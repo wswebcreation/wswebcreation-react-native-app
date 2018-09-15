@@ -140,6 +140,12 @@ The config can be found in [__tests__/appium/config](./__tests__/appium/config).
 
 The tests can be found in [__tests__/appium/features](./__tests__/appium/features).
 
+> Run tests with `npm run appium.ios`. In this case the app will be closed and started between all scenario's.
+
+
+> Run tests with `npm run appium.ios -- --restartDot`. In this case the app will internally be started between all scenario's, this reduce the execution time a little bit. (total time went from 128 seconds to 107 seconds).
+Large test sets will have even more profit.
+
 
 ### Detox
 #### Installing Detox
