@@ -61,11 +61,7 @@ export function waitForWebsiteLoaded() {
  * @param {string} context should be native of webview
  */
 export function switchToContext(context) {
-  let index = context === CONTEXT_REF.WEBVIEW ? 1 : 0;
-  if (context === CONTEXT_REF.WEBVIEW && getCurrentContexts().length > 2 && device.isIOS) {
-    index = getCurrentContexts().findIndex(currentContext => currentContext.includes('.2'));
-  }
-  device.context(getCurrentContexts()[index]);
+  device.context(getCurrentContexts()[context === CONTEXT_REF.WEBVIEW ? 1 : 0]);
 }
 
 /**
