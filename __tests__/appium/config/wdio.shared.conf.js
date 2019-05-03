@@ -8,7 +8,7 @@ exports.config = {
   // ====================
   // Appium configuration
   // ====================
-  services: ['appium'],
+  services: [ 'appium' ],
 
   // ==================
   // Test Configuration
@@ -30,15 +30,13 @@ exports.config = {
   cucumberOpts: {
     require: [
       '__tests__/appium/config/helpers/after.scenario.js',
-      '__tests__/appium/config/helpers/report.hook.js',
       '__tests__/appium/step_definitions/base.steps.js',
       '__tests__/appium/step_definitions/navigation.steps.js',
       '__tests__/appium/step_definitions/webview.steps.js',
       '__tests__/appium/step_definitions/chat.steps.js',
     ],
     backtrace: false,
-    compiler: ['js:babel-register'],
-    format: ['pretty'],
+    format: [ 'pretty' ],
     colors: true,
     snippets: true,
     source: true,
@@ -46,7 +44,13 @@ exports.config = {
     timeout: 60000,
     ignoreUndefinedDefinitions: false,
   },
-  reporters: ['spec'],
+  reporters: [ 'spec', 'multiple-cucumber-html' ],
+  reporterOptions: {
+    htmlReporter: {
+      jsonFolder: '.tmp/json-output/',
+      reportFolder: '.tmp/report/',
+    },
+  },
 
   // =====
   // Hooks
@@ -65,6 +69,9 @@ exports.config = {
     reports and failure screenshots.
 =================================================================================\n`);
     fs.emptyDirSync('.tmp/');
+  },
+  beforeSession: () => {
+    require('babel-register');
   },
   /**
    * Gets executed before test execution begins. At this point you can access to all global
@@ -93,15 +100,6 @@ exports.config = {
      */
     device.options.restartApp = false;
   },
-  /**
-   * Gets executed after all workers got shut down and the process is about to exit.
-   */
-  onComplete: () => {
-    report.generate({
-      jsonDir: '.tmp/json-output/',
-      reportPath: '.tmp/report/',
-    });
-  },
 };
 
 /**
@@ -127,5 +125,5 @@ function getFeatureFiles() {
       .map(feature => `${process.cwd()}/__tests__/appium/**/${feature}.feature`);
   }
 
-  return [`${process.cwd()}/__tests__/appium/**/*.feature`];
+  return [ `${process.cwd()}/__tests__/appium/**/*.feature` ];
 }

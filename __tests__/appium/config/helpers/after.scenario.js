@@ -1,6 +1,7 @@
 import { After, Status } from 'cucumber';
 import { ensureDirSync } from 'fs-extra';
 import { resolve } from 'path';
+import multipleCucumberHtmlReporter from 'wdio-multiple-cucumber-html-reporter';
 import { switchToContext } from '../../screen-objects/webview';
 import { CONTEXT_REF, SCREENSHOTS_FOLDERS } from '../../support/constants';
 
@@ -8,7 +9,7 @@ After(function (scenarioResult) {
   const world = this;
   // Always set it to false
   device.options.firstAppStart = false;
-  return (scenarioResult.status === Status.FAILED)
+  return (scenarioResult.result.status === Status.FAILED)
     ? saveFailedScenarioScreenshot(world, scenarioResult)
     : scenarioResult.status;
 });
@@ -36,9 +37,8 @@ function saveFailedScenarioScreenshot(world, scenarioResult) {
     .toLowerCase()
     .substr(0, 100)}.png`;
   const filepath = resolve(screenshotPath, fileName);
-  const screenshot = device.saveScreenshot(filepath);
 
-  world.attach(screenshot, 'image/png');
+  multipleCucumberHtmlReporter.attach(device.saveScreenshot(filepath), 'image/png');
 
   // Restart the app the next time
   device.options.restartApp = true;

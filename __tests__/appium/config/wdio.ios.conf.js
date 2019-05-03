@@ -17,6 +17,17 @@ config.capabilities = [
     orientation: 'PORTRAIT',
     platformName,
     platformVersion,
+    metadata: {
+      app: {
+        name: 'wswebcreation-app',
+        version: '0.1.0',
+      },
+      device: deviceName,
+      platform: {
+        name: platformName,
+        version: platformVersion,
+      },
+    },
   },
 ];
 
