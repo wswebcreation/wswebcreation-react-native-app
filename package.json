@@ -64,7 +64,8 @@
     "wdio-appium-service": "0.2.3",
     "wdio-cucumber-framework": "1.0.3",
     "wdio-spec-reporter": "0.1.3",
-    "webdriverio": "4.10.1"
+    "webdriverio": "4.10.1",
+    "yargs": "^13.2.2"
   },
   "repository": {
     "type": "git",
