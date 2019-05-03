@@ -92,7 +92,7 @@
         "binaryPath": "ios/build/Build/Products/Debug-iphonesimulator/wswebcreation.app",
         "build": "xcodebuild -project ios/wswebcreation.xcodeproj -scheme wswebcreation -configuration Debug -sdk iphonesimulator -derivedDataPath ios/build",
         "type": "ios.simulator",
-        "name": "iPhone 8"
+        "name": "iPhone 8, iOS 11.4"
       }
     }
   }
